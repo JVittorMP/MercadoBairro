@@ -30,4 +30,23 @@ typedef struct Clientes{
     int pontos;
 } Clientes;
 
+// Registro de Vendas
+typedef struct Vendas{
+    int ident_vendas;
+    char cpf[13];
+    Data compra;
+    float valor_total;
+    int quant_prod;
+} Vendas;
+
+// Registro de ItensCompra
+typedef struct ItensCompra{
+    int ident_venda;
+    char cpf[13];
+    int ident_prod;
+    int quant;
+    float valor_uni;
+    float valor_total;
+} ItensCompra;
+
 #endif
