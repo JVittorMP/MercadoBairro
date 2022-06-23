@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 void NovaVenda () {
     FILE *venda;
     Vendas novo;
