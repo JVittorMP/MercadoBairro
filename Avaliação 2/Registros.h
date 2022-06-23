@@ -20,7 +20,7 @@ typedef struct Produto{
 
 // Registro dos Clientes
 typedef struct Clientes{
-    char cpf[13];
+    char CPF[13];
     char nome[50];
     Data nascimento;
     int idade;
