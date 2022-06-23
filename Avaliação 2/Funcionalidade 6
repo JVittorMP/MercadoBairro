@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 void ListarVendas () {
     FILE *venda;
     Vendas compra;
