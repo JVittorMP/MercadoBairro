@@ -56,7 +56,7 @@ void NovaVenda () {
         printf("Ocorreu um erro ou a compra foi cancelada.");
 }
 
--------------------------------------------------------------------*
+//-------------------------------------------------------------------*
 
 bool ProcuraCliente (char cpf[13]) {
     FILE *cliente;
@@ -77,7 +77,7 @@ bool ProcuraCliente (char cpf[13]) {
     return (existe);
 }
 
--------------------------------------------------------------------
+//-------------------------------------------------------------------
 
 int DefinirIdentificaçãoDaVenda () {
     FILE *venda;
@@ -99,7 +99,7 @@ int DefinirIdentificaçãoDaVenda () {
     }
 }
 
--------------------------------------------------------------------
+//-------------------------------------------------------------------
 
 void AdicionarItemCompra (int cod, char cpf[13], bool *compraValida, float *preco) {
     FILE *compra;
@@ -132,7 +132,7 @@ void AdicionarItemCompra (int cod, char cpf[13], bool *compraValida, float *prec
     }
 }
 
--------------------------------------------------------------------*
+//-------------------------------------------------------------------*
 
 void MostrarProduto (int cod, int *estoque, float *valor) {
     FILE *produto;
@@ -163,7 +163,7 @@ void MostrarProduto (int cod, int *estoque, float *valor) {
     }
 }
 
--------------------------------------------------------------------*
+//-------------------------------------------------------------------*
 
 void ReduzirEstoque (int cod, int red) {
     FILE *prod;
@@ -187,4 +187,8 @@ void ReduzirEstoque (int cod, int red) {
         fwrite (&info, sizeof(Produto), 1, prod);
         fclose(prod);
     }
+}
+
+int main () {
+    return 0;
 }
