@@ -24,7 +24,7 @@ typedef struct Clientes{
     char nome[50];
     Data nascimento;
     int idade;
-    char endereço[50];
+    char endereco[50];
     char cidade[50];
     char estado[2];
     int pontos;
