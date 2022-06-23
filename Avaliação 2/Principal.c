@@ -3,6 +3,6 @@
 #include "Menus.h"
 #include "Func.h"
 
-void main(){
+int main(){
     Menu_Principal();
 }
