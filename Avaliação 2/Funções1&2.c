@@ -3,6 +3,13 @@
 #include "Registros.h"
 
 void IncluirProdutos(){
-    FILE *arq1
-    arq1 = fopen
+    Produto NovoProduto;
+    FILE *arq1;
+    arq1 = fopen("Produtos.dat", "ab");
+    printf("Insira as informações: \n\n");
+    if(arq1 != NULL)
+    {
+        printf("Id: \n");
+        scanf(" %d", NovoProduto.id)
+    }
 }
