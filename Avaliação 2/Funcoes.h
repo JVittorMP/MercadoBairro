@@ -7,6 +7,8 @@ int DefinirIdentificacaoDaVenda();
 void AdicionarItemCompra();
 void MostrarProduto();
 void ReduzirEstoque();
+void ListarVendas();
+char CPFDoCliente();
 
 // Funções de Produtos
 void Incluir_Produtos();
