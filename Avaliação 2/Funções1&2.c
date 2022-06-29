@@ -40,7 +40,7 @@ int Identificar_Produto(){
     {
         printf("Qual produto deseja alterar? (Insira id): ");
         scanf(" %d", &id_prod);
-        while(arqv != feof(arqv))
+        while(!feof(arqv))
         {
             fread(Ident, sizeof(Produto), 1, arqv);
             if(Ident.id == id_prod)
