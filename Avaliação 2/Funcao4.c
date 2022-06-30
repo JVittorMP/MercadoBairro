@@ -132,7 +132,6 @@ void MostrarProduto(int cod, int *estoque, float *valor){
     FILE *produto;
     bool encontrado = false;
     Produto info;
-    int estoque;
 
     produto = fopen ("Produtos.dat","rb");
     *estoque = 0;
