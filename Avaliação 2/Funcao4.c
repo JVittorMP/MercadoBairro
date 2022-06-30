@@ -101,6 +101,7 @@ int DefinirIdentificacaoDaVenda(){
 void AdicionarItemCompra(int cod, char cpf[13], bool *compraValida, float *preco){
     FILE *compra;
     ItensCompra item;
+    int estoque;
 
     printf ("Código do produto: ");
     scanf (" %d", &item.id_prod);
