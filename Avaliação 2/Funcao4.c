@@ -162,22 +162,27 @@ void ReduzirEstoque(int cod, int red){
     FILE *prod;
     Produto info;
     bool encontrado = false;
-    int cont = 1;
+    int cont = 0;
 
     prod = fopen("Produtos.dat", "rb");
     if (prod == NULL)
-        printf ("Erro de abertura do arquivo");
+        printf ("Erro de abertura do arquivo\n\n");
     else {
-        while ((fread(&info, sizeof(Produto), 1, prod) != 0) && (!encontrado)) {
+        while ((!encontrado) && (fread(&info, sizeof(Produto), 1, prod) != 0)) {
             if (strcmp(info.id, cod) == 0)
                 encontrado = true;
             else
                 cont++;
         }
         fclose(prod);
-        prod = fopen("Produtos.dat", "wb");
-        fseek (prod, sizeof(Produto)*cont, SEEK_SET);
-        fwrite (&info, sizeof(Produto), 1, prod);
-        fclose(prod);
+        if (encontrado) {
+            info.estoque -= red;
+            prod = fopen("Produtos.dat", "wb");
+            fseek (prod, sizeof(Produto)*cont, SEEK_SET);
+            fwrite (&info, sizeof(Produto), 1, prod);
+            fclose(prod);
+        }
+        else
+            printf ("Produto não encontrado.\n\n");
     }
 }

@@ -7,6 +7,12 @@ int DefinirIdentificacaoDaVenda();
 void AdicionarItemCompra();
 void MostrarProduto();
 void ReduzirEstoque();
-void IncluirProdutos();
+void ListarVendas();
+char CPFDoCliente();
 
-#endif //AV2_FUNCAO4_H
+// Funções de Produtos
+void Incluir_Produtos();
+void Alterar_Produto();
+void Identificar_Produto();
+
+#endif
