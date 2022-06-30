@@ -1,0 +1,2 @@
+C:/Users/joao_/CLionProjects/AV2/Avaliação 2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/joao_/CLionProjects/AV2/Avaliação 2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
