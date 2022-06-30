@@ -15,14 +15,14 @@ void Incluir_Produtos(){
         scanf(" %[^\n]s", NovoProduto.setor);
         printf("Nome: ");
         scanf(" %[^\n]s", NovoProduto.nome);
-        printf("Preço: ")
+        printf("Preço: ");
         scanf(" %lf", &NovoProduto.preco);
         printf("Validade (dia/mês/ano): ");
         scanf(" %d/%d/%d", &NovoProduto.validade.dia, &NovoProduto.validade.mes, &NovoProduto.validade.ano);
         printf("Estoque: ");
         scanf(" %d", &NovoProduto.estoque);
     }
-    fwrite(NovoProduto, sizeof(Produto), 1, arqv);
+    fwrite(&NovoProduto, sizeof(Produto), 1, arqv);
     fclose(arqv);
 }
 
@@ -42,7 +42,7 @@ int Identificar_Produto(){
         scanf(" %d", &id_prod);
         while(!feof(arqv))
         {
-            fread(Ident, sizeof(Produto), 1, arqv);
+            fread(&Ident, sizeof(Produto), 1, arqv);
             if(Ident.id == id_prod)
             {
                 return aux;

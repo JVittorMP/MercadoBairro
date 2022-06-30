@@ -21,9 +21,9 @@ void NovaVenda(){
     }
 
     //Procura a identificação da última venda para registrar o novo.
-    novo.id = DefinirIdentificacaoDaVenda();
-    while (novo.id <= 0)
-        novo.id++;
+    novo.id_vendas = DefinirIdentificacaoDaVenda();
+    while (novo.id_vendas <= 0)
+        novo.id_vendas++;
 
     printf ("Data: ");
     scanf ("%d / %d / %d", &novo.compra.dia, &novo.compra.mes, &novo.compra.ano);
@@ -34,7 +34,7 @@ void NovaVenda(){
     do {
         //Adiciona mais um registro no arquivo ItensCompra.
         //E muda por referência a disponibilidade do produto.
-        AdicionarItemCompra (novo.id, novo.CPF, &itemDisp, &valor);
+        AdicionarItemCompra (novo.id_vendas, novo.CPF, &itemDisp, &valor);
         //Dentro desta função há outra função que irá mostrar as informações do produto.
         //Caso o produto esteja disponível, informações serão adicionadas no registro da venda.
         if (itemDisp) {
@@ -92,7 +92,7 @@ int DefinirIdentificacaoDaVenda(){
         //Caso contrário retornará um valor acima da última venda.
     else {
         while (fread(&ultima, sizeof(Vendas), 1, venda) != 0)
-            id = ultima.id;
+            id = ultima.id_vendas;
         fclose(venda);
         return (id+1);
     }

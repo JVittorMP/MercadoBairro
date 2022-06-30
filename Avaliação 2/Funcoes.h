@@ -9,10 +9,11 @@ void MostrarProduto();
 void ReduzirEstoque();
 void ListarVendas();
 char CPFDoCliente();
+float ValorTotalDasVendas();
 
 // Funções de Produtos
 void Incluir_Produtos();
 void Alterar_Produto();
-void Identificar_Produto();
+int Identificar_Produto();
 
 #endif

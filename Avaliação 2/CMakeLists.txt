@@ -3,4 +3,4 @@ project(Principal C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(Avaliação2 Principal.c)
+add_executable(AV2 Principal.c)
