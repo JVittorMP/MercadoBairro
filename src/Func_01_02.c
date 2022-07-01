@@ -43,6 +43,7 @@ void Alterar_Produto(){
         fwrite(&alt, sizeof(Produto), 1, arqv);
         fflush(arqv);
     }
+    fclose(arqv)
 }
 
 int Identificar_Produto(){
