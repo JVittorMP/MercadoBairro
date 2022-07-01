@@ -31,10 +31,12 @@ void Alterar_Produto(){
     pos = Identificar_Produto(); // Uso da Função para Identificar a Posição do Produto no Arquivo
     Produto alt;
     FILE *arqv;
-    arqv = fopen("produtos.dat", "r+wb");
+    arqv = fopen("Produtos.dat", "r+b");
+    pos = Identificar_Produto(); // Uso da Função para Identificar a Posição do Produto no Arquivo
     if(pos == 0)
         printf("Produto não cadastrado");
-    else{ // Troca da identificação do Produto
+    else // Troca da identificação do Produto
+    {
         fseek(arqv, sizeof(Produto)*(pos-1), SEEK_SET);
         fread(&alt, sizeof(Produto), 1, arqv);
         printf("Deseja alterar para qual nome?");
@@ -43,6 +45,7 @@ void Alterar_Produto(){
         fwrite(&alt, sizeof(Produto), 1, arqv);
         fflush(arqv);
     }
+    fclose(arqv);
 }
 
 int Identificar_Produto(){
@@ -67,6 +70,8 @@ int Identificar_Produto(){
         }
     }
     else
+    {
         fclose(arqv);
         return 0; // Retorna 0 caso o produto não esteja cadastrado
+    }
 }
