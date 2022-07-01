@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include "funcoes.h"
+#include "Funcoes.h"
 #include "Registros.h"
 
 void ListarVendas () {
