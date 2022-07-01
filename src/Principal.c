@@ -3,6 +3,5 @@
 #include "Menus.h"
 
 int main(){
-    //Menu_Principal();
-    printf("Hello World!");
+    Menu_Principal();
 }
