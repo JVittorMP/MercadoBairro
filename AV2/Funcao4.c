@@ -15,7 +15,7 @@ void NovaVenda(){
     //Se o cliente não existir, haverá um desvio para registra-lo.
     printf("CPF: ");
     scanf(" %s", novo.CPF);
-    if (!ProcuraCliente (novo.CPF)) {
+    if (ProcuraCliente (novo.CPF) == 0) {
         RegistrarCliente();//Ainda não existe!
         //LIMPAR TELA.
     }
@@ -59,19 +59,19 @@ void NovaVenda(){
         printf("Ocorreu um erro ou a compra foi cancelada.");
 }
 
-bool ProcuraCliente(char cpf[13]){
+int ProcuraCliente(char cpf[13]){
     FILE *cliente;
     Clientes info;
-    bool existe = false;
+    int existe = 0;
 
     cliente = fopen ("Clientes.dat", "rb");
     if (cliente == NULL)
         printf ("Erro ao abrir o arquivo dos clientes.");
     else {
         //Procura o cliente no arquivo.
-        while ((!existe) && (fread(&info, sizeof(Clientes), 1, cliente) != 0)) {
+        while ((existe == 0) && (fread(&info, sizeof(Clientes), 1, cliente) != 0)) {
             if (strcmp(info.CPF, cpf) == 0)
-                existe = true;
+                existe = 1;
         }
     }
     fclose(cliente);
