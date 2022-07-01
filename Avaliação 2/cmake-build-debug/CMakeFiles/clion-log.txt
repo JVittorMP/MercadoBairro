@@ -1,1 +1,0 @@
-CMakeLists.txt not found in C:\Users\joao_\CLionProjects\Mercado_Bairro\Avaliação 2 Select CMakeLists.txt
