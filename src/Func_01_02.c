@@ -28,6 +28,21 @@ void Incluir_Produtos(){
 
 void Alterar_Produto(){
     int pos; // Variável para guardar a posição
+    Produto alt;
+    FILE *arqv;
+    arqv = fopen("produtos.dat", "r+wb");
+    pos = Identificar_Produto();
+    if(pos == 0)
+        printf("Produto não cadastrado");
+    else{
+        fseek(arqv, sizeof(Produto)*(pos-1), SEEK_SET);
+        fread(&alt, sizeof(Produto), 1, arqv);
+        printf("Deseja alterar para qual nome?");
+        scanf(" %d", &alt.id);
+        fseek(arqv, sizeof(Produto)*(pos-1), SEEK_SET);
+        fwrite(&alt, sizeof(Produto), 1, arqv);
+        fflush(arqv);
+    }
 }
 
 int Identificar_Produto(){
