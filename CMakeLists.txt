@@ -7,6 +7,6 @@ add_executable(AV2
         src/Principal.c
         src/Func_05.c
         src/Func_06.c
-        scr/Func_01_02.c
-        scr/Menus.c
+        src/Func_01_02.c
+        src/Menus.c
         )

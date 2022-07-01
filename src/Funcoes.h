@@ -1,6 +1,8 @@
 #ifndef AV2_FUNCAO4_H
 #define AV2_FUNCAO4_H
 
+#include <stdbool.h>
+
 void NovaVenda();
 bool ProcuraCliente();
 int DefinirIdentificacaoDaVenda();
