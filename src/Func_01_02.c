@@ -30,7 +30,7 @@ void Alterar_Produto(){
     int pos; // Variável para guardar a posição
     Produto alt;
     FILE *arqv;
-    arqv = fopen("produtos.dat", "r+wb");
+    arqv = fopen("produtos.dat", "r+b");
     pos = Identificar_Produto(); // Uso da Função para Identificar a Posição do Produto no Arquivo
     if(pos == 0)
         printf("Produto não cadastrado");
