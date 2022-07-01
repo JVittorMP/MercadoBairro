@@ -45,11 +45,13 @@ int Identificar_Produto(){
             fread(&Ident, sizeof(Produto), 1, arqv);
             if(Ident.id == id_prod)
             {
+                fclose(arqv);
                 return aux;
             }
             aux++;
         }
     }
     else
+        fclose(arqv);
         return 0; // Retorna 0 caso o produto não esteja cadastrado
 }
