@@ -9,4 +9,5 @@ add_executable(AV2
         src/Func_06.c
         src/Func_01_02.c
         src/Menus.c
+        src/Utilitario.c
         )

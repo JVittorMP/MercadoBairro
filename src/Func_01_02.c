@@ -28,10 +28,10 @@ void Incluir_Produtos(){
 
 void Alterar_Produto(){
     int pos; // Variável para guardar a posição
+    pos = Identificar_Produto(); // Uso da Função para Identificar a Posição do Produto no Arquivo
     Produto alt;
     FILE *arqv;
     arqv = fopen("produtos.dat", "r+wb");
-    pos = Identificar_Produto(); // Uso da Função para Identificar a Posição do Produto no Arquivo
     if(pos == 0)
         printf("Produto não cadastrado");
     else{ // Troca da identificação do Produto

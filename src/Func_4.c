@@ -117,7 +117,7 @@ void AdicionarItemCompra(int cod, char cpf[13], bool *compraValida, float *preco
         *preco = 0;
     }
     else {
-        item.CPF = cpf;
+        strcpy (item.CPF, cpf);
         item.id_venda = cod;
         item.valor_total = item.valor_uni * item.quant;
         compra = fopen ("ItensCompra.dat", "ab");

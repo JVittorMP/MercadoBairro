@@ -2,6 +2,8 @@
 #define AV2_FUNCAO4_H
 
 #include <stdbool.h>
+// Funções de Utilidade
+void Limpar_Tela();
 
 void NovaVenda();
 bool ProcuraCliente();
