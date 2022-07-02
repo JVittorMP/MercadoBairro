@@ -1,7 +1,12 @@
 #ifndef AV2_FUNCAO4_H
 #define AV2_FUNCAO4_H
 
+// Bibliotecas Básicas
+#include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
+
 // Funções de Utilidade
 void Limpar_Tela();
 

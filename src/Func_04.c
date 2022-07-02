@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <strings.h>
 #include "Funcoes.h"
 #include "Registros.h"
 
