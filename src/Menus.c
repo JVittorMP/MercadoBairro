@@ -83,6 +83,7 @@ void Menu_Produto(){
             Incluir_Produtos();
             break;
         case 2:
+            Alterar_Produto();
             break;
         case 3:
             break;
