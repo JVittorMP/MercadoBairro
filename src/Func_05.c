@@ -8,7 +8,7 @@ float ValorTotalDasVendas (char cpf[13]) {
     Vendas info;
     float total = 0;
 
-    venda = fopen("Vendas.dat", "rb");
+    venda = fopen("../Vendas.dat", "rb");
     if (venda == NULL)
         printf("Erro na abertura do arquivo de vendas");
     else {
