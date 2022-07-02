@@ -53,9 +53,9 @@ void Alterar_Produto(){
 
 void Troca(Produto *pont){ // Altera os valores no registro
     int aux;
-    printf("Qual informação deseja alterar? \n");
     printf(" 1. Identificação \n 2. Setor \n 3. Nome \n");
-    printf(" 4. Preço \n 5. Validade \n 6. Estoque \n 9. Sair \n");
+    printf(" 4. Preço \n 5. Validade \n 6. Estoque \n 9. Sair \n\n");
+    printf("Qual informação deseja alterar? ");
     scanf(" %d", &aux);
     Limpar_Tela();
     switch(aux){
