@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <windows.h>
-#include <stdbool.h>
+#include "Funcoes.h"
 #include "Registros.h"
 #include "Menus.h"
 
@@ -27,8 +27,6 @@ int main(){
             scanf(" %c", &confirm);
             if(confirm == 's' || confirm == 'S')
                 sair = true;
-            else
-                sair = false;
         }
         fclose(arqv);
     }

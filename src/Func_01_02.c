@@ -31,13 +31,24 @@ void Incluir_Produtos(){
 // Função 2
 void Alterar_Produto(){
     int pos; // Variável para guardar a posição
-    pos = Identificar_Produto(); // Uso da Função para Identificar a Posição do Produto no Arquivo
     Produto alt;
+    bool Saida = false;
+    char confirma;
+
+    pos = Identificar_Produto(); // Uso da Função para Identificar a Posição do Produto no Arquivo
     FILE *arqv;
     arqv = fopen("../Produtos.dat", "r+b");
-    pos = Identificar_Produto(); // Uso da Função para Identificar a Posição do Produto no Arquivo
-    if(pos == 0)
-        printf("Produto não cadastrado");
+    if(pos == 0){
+        printf("\n"); // Pula Linha Para Separar os 'Printf'
+        printf("Produto não Cadastrado! \n\n");
+        while(!Saida)
+        {
+            printf("Deseja retornar ao menu? (S/N) ");
+            scanf(" %c", &confirma);
+            if(confirma == 'S' || confirma == 's')
+                Saida = true;
+        }
+    }
     else // Troca da informação do Produto
     {
         fseek(arqv, sizeof(Produto)*(pos-1), SEEK_SET);
@@ -48,6 +59,7 @@ void Alterar_Produto(){
         fflush(arqv);
     }
     fclose(arqv);
+    Limpar_Tela();
     Menu_Produto();
 }
 
@@ -89,14 +101,14 @@ void Troca(Produto *pont){ // Altera os valores no registro
 }
 
 int Identificar_Produto(){
-    int aux = 1; // Identifica a posição
+    int aux = 1; // Identifica a Posição do Produto no Arquivo
     int id_prod;
     Produto Ident;
     FILE *arqv;
     arqv = fopen("../Produtos.dat", "rb");
     if(arqv != NULL)
     {
-        printf("Qual produto deseja alterar? (Insira id): ");
+        printf("Insira o ID do produto que deseja alterar: ");
         scanf(" %d", &id_prod);
         while(!feof(arqv))
         {
@@ -104,14 +116,16 @@ int Identificar_Produto(){
             if(Ident.id == id_prod)
             {
                 fclose(arqv);
-                return aux;
+                return aux; // Devolve a Posição
             }
             aux++;
         }
+        fclose(arqv);
+        return 0; // ID não identificado
     }
     else
     {
         fclose(arqv);
-        return 0; // Retorna 0 caso o produto não esteja cadastrado
+        return 0; // Arquivo Não Existe
     }
 }
