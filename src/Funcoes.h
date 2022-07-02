@@ -15,6 +15,9 @@ void ListarVendas();
 char CPFDoCliente();
 float ValorTotalDasVendas();
 
+// Funções de Clientes
+void Cadastrar_Clientes():
+
 // Funções de Produtos
 void Incluir_Produtos();
 void Alterar_Produto();
