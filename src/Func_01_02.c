@@ -2,6 +2,7 @@
 #include "Funcoes.h"
 #include "Registros.h"
 
+// Função 1
 void Incluir_Produtos(){
     Produto NovoProduto; // É necessario alocar dinamicamente? Acho que não.
     FILE *arqv;
@@ -26,6 +27,7 @@ void Incluir_Produtos(){
     fclose(arqv);
 }
 
+// Função 2
 void Alterar_Produto(){
     int pos; // Variável para guardar a posição
     pos = Identificar_Produto(); // Uso da Função para Identificar a Posição do Produto no Arquivo
