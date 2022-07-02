@@ -34,11 +34,11 @@ void Menu_Vendas(){
     scanf(" %d", &menu);
     Limpar_Tela();
     switch(menu){
-        case 1:
+        case 1: // Registrar Nova Venda
             break;
-        case 2:
+        case 2: // Listar a Venda do Cliente
             break;
-        case 9:
+        case 9: // Retornar para o Menu Principal
             Menu_Principal();
             break;
     }
@@ -54,20 +54,20 @@ void Menu_Clientes(){
     scanf(" %d", &menu);
     Limpar_Tela();
     switch(menu){
-        case 1:
+        case 1: // Cadastro dos Clientes
             Cadastrar_Clientes();
             break;
-        case 2:
+        case 2: // Atualizar Pontuação do Clientes
             break;
-        case 3:
+        case 3: // Atualizar Informações dos Clientes
             break;
-        case 4:
+        case 4: // Clientes Entre 18 e 25 Anos
             Clientes_18_25();
             break;
-        case 5:
+        case 5: // Clientes Acima de 1000 Pontos
             Listar_Clientes();
             break;
-        case 9:
+        case 9: // Retornar para o Menu Principal
             Menu_Principal();
             break;
     }
@@ -82,18 +82,18 @@ void Menu_Produto(){
     scanf(" %d", &menu);
     Limpar_Tela();
     switch(menu){
-        case 1:
+        case 1: // Cadastrar Novos Produtos
             Incluir_Produtos();
             break;
-        case 2:
+        case 2: // Alterar Informações dos Produtos
             Alterar_Produto();
             break;
-        case 3:
+        case 3: // Mostrar Estoque por Setor
             break;
-        case 4:
+        case 4: // Mostrar Produtos com Estoque Baixo
             Baixo_Estoque();
             break;
-        case 9:
+        case 9: // Retornar para o Menu Principal
             Menu_Principal();
             break;
     }
