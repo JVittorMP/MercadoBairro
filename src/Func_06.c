@@ -21,23 +21,23 @@ void ListarVendas () {
         case 2:
             printf ("Digite nome: ");
             scanf (" %[^\n]s", nome);
-            strcpy (cpf, CPFDoCliente(nome)); //Arrumar cópia para devolver a string
+            CPFdoCliente (nome, &cpf);
             break;
         default:
-            printf ("Opção inválida!");
+            printf ("Opção inválida!\n\n");
             break;
     }
-    //SEPARAR TELA
+    printf ("\n\n");
     if (strlen(cpf) < 13)
-        printf ("Não foi possívle acessar lista.");
+        printf ("Não foi possívle acessar lista.\n\n");
     else {
-        venda = fopen ("Vendas.dat", "rb");
+        venda = fopen ("../Vendas.dat", "rb");
         if (venda == NULL)
-            printf ("Erro na bertura do arquivo de vendas.");
+            printf ("Erro na bertura do arquivo de vendas.\n\n");
         else {
             while (fread(&compra, sizeof(Vendas), 1, venda) != 0) {
                 if (strcmp(compra.CPF, cpf) == 0) {
-                    printf ("Data: %d / %d / %d\n", compra.compra.dia, compra.compra.mes, compra.compra.ano);
+                    printf ("Data: %d/%d/%d\n", compra.compra.dia, compra.compra.mes, compra.compra.ano);
                     printf ("Valor: %f\n", compra.valor_total);
                     printf ("Quantidade de produtos: %d\n", compra.quant_prod);
                     //SEPARAR TELA
@@ -48,14 +48,14 @@ void ListarVendas () {
     }
 }
 
-char CPFDoCliente (char nome[30]) {
+char CPFdoCliente (char nome[30], char *cpf) {
     FILE *cliente;
     Clientes info;
     bool encontrado = false;
 
-    cliente = fopen ("Clientes.dat", "rb");
+    cliente = fopen ("../Clientes.dat", "rb");
     if (cliente == NULL)
-        printf ("Erro na abertura do arquuivo de clientes");
+        printf ("Erro na abertura do arquuivo de clientes.\n\n");
     else {
         while ((!encontrado) && (fread(&info, sizeof(Clientes), 1, cliente) != 0)) {
             if (strcmp(info.nome, nome) == 0)
@@ -63,5 +63,5 @@ char CPFDoCliente (char nome[30]) {
         }
     }
     fclose(cliente);
-    return (info.CPF);
+    strcpy(*cpf, info.CPF);
 }
