@@ -5,26 +5,30 @@
 
 // Função 3
 void Cadastrar_Clientes(){
-    Produto NovoCliente; // É necessario alocar dinamicamente? Acho que não.
+    Clientes NovoCliente;
     FILE *arqv;
-    arqv = fopen("../Produtos.dat", "ab");
-    printf("Insira as informações do produto: \n\n");
+    arqv = fopen("../Clientes.dat", "ab");
+    printf("Insira as informações do cliente: \n\n");
     if(arqv != NULL)
     {
-        printf("Id: ");
-        scanf(" %d", &NovoCliente.id);
-        printf("Setor: ");
-        scanf(" %[^\n]s", NovoCliente.setor);
+        printf("CPF: ");
+        scanf(" %[^\n]s", NovoCliente.CPF);
         printf("Nome: ");
         scanf(" %[^\n]s", NovoCliente.nome);
-        printf("Preço: ");
-        scanf(" %lf", &NovoCliente.preco);
-        printf("Validade (dia/mês/ano): ");
-        scanf(" %d/%d/%d", &NovoCliente.validade.dia, &NovoCliente.validade.mes, &NovoCliente.validade.ano);
-        printf("Estoque: ");
-        scanf(" %d", &NovoCliente.estoque);
+        printf("Data de Nascimento (dia/mês/ano): ");
+        scanf(" %d/%d/%d", &NovoCliente.nascimento.dia, &NovoCliente.nascimento.mes, &NovoCliente.nascimento.ano);
+        printf("Idade: ");
+        scanf(" %d", &NovoCliente.idade);
+        printf("Endereço: ");
+        scanf(" %[^\n]s", NovoCliente.endereco);
+        printf("Cidade: ");
+        scanf(" %[^\n]s", NovoCliente.cidade);
+        printf("Estado (UF): ");
+        scanf(" %[^\n]s", NovoCliente.estado);
+        printf("Pontos: ");
+        scanf(" %d", NovoCliente.pontos);
     }
-    fwrite(&NovoCliente, sizeof(Produto), 1, arqv);
+    fwrite(&NovoCliente, sizeof(Clientes), 1, arqv);
     fclose(arqv);
 }
 

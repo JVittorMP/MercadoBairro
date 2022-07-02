@@ -57,6 +57,7 @@ void Menu_Clientes(){
     Limpar_Tela();
     switch(menu){
         case 1:
+            Cadastrar_Clientes();
             break;
         case 2:
             break;
