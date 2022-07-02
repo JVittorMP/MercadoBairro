@@ -13,7 +13,7 @@ void NovaVenda(){
     printf("CPF: ");
     scanf(" %s", novo.CPF);
     if (!ProcuraCliente (novo.CPF)) {
-        RegistrarCliente();//Ainda não existe!
+        Cadastrar_Clientes();//Ainda não existe!
         //LIMPAR TELA.
     }
 

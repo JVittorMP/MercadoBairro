@@ -20,7 +20,6 @@ void Listar_Clientes(){
     else
         printf("Falha na Abertura do Arquivo");
     fclose(arqv);
-    Limpar_Tela();
 }
 
 // Função 8
@@ -41,6 +40,33 @@ void Baixo_Estoque(){
             }
         }
     }
+    else
+        printf("Falha na Abertura do Arquivo");
     fclose(arqv);
-    Limpar_Tela();
+}
+
+// Função 9
+void Clientes_18_25(){
+    Clientes aux;
+    int total = 0;
+    FILE *arqv;
+    arqv = fopen("../Clientes.dat", "rb");
+    printf("Clientes com mais de 1000 pontos: \n\n");
+    if(arqv != NULL)
+    {
+        printf("\t| Nome \t| Idade \t|");
+        while(!feof(arqv))
+        {
+            fread(&aux, sizeof(Clientes), 1, arqv);
+            if(aux.idade > 17 && aux.idade < 26)
+            {
+                printf("\t| %s \t| %d \t|", aux.nome, aux.idade);
+                total++;
+            }
+        }
+    }
+    else
+        printf("Falha na Abertura do Arquivo");
+    fclose(arqv);
+    printf("Total de clientes entre 18 e 25 anos: %d", total);
 }
