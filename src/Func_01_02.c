@@ -52,8 +52,7 @@ void Alterar_Produto(){
     Menu_Produto();
 }
 
-// Preciso Retornar o registro ou passar o registro por referência
-void Troca(Produto alt){ // Altera os valores no registro
+void Troca(Produto *pont){ // Altera os valores no registro
     int aux;
     printf("Qual informação deseja alterar? \n");
     printf(" 1. Identificação \n 2. Setor \n 3. Nome \n");
@@ -63,27 +62,27 @@ void Troca(Produto alt){ // Altera os valores no registro
     switch(aux){
         case 1:
             printf("Insira o novo id: ");
-            scanf(" %d", &alt.id);
+            scanf(" %d", &pont->id);
             break;
         case 2:
             printf("Insira o novo setor: ");
-            scanf(" %[^\n]s", alt.setor);
+            scanf(" %[^\n]s", &pont->setor);
             break;
         case 3:
             printf("Insira o novo nome: ");
-            scanf(" %[^\n]s", alt.nome);
+            scanf(" %[^\n]s", &pont->nome);
             break;
         case 4:
             printf("Insira o novo preço: ");
-            scanf(" %lf", &alt.preco);
+            scanf(" %lf", &pont->preco);
             break;
         case 5:
             printf("Insira a nova validade (dia/mês/ano): ");
-            scanf(" %d/%d/%d", &alt.validade.dia, &alt.validade.mes, &alt.validade.ano);
+            scanf(" %d/%d/%d", &pont->validade.dia, &pont->validade.mes, &pont->validade.ano);
             break;
         case 6:
             printf("Insira o novo : ");
-            scanf(" %d", &alt.estoque);
+            scanf(" %d", &pont->estoque);
             break;
         case 9:
             break;
