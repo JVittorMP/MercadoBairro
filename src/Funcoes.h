@@ -23,11 +23,13 @@ float ValorTotalDasVendas();
 // Funções de Clientes
 void Cadastrar_Clientes();
 void Alterar_Clientes();
+void Listar_Clientes();
 
 // Funções de Produtos
 void Incluir_Produtos();
 void Alterar_Produto();
 void Troca();
 int Identificar_Produto();
+void Baixo_Estoque();
 
 #endif

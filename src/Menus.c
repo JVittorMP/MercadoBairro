@@ -64,6 +64,7 @@ void Menu_Clientes(){
         case 4:
             break;
         case 5:
+            Listar_Clientes();
             break;
         case 9:
             Menu_Principal();
@@ -89,6 +90,7 @@ void Menu_Produto(){
         case 3:
             break;
         case 4:
+            Baixo_Estoque();
             break;
         case 9:
             Menu_Principal();
