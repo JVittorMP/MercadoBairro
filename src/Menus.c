@@ -80,6 +80,7 @@ void Menu_Produto(){
     Limpar_Tela();
     switch(menu){
         case 1:
+            Incluir_Produtos();
             break;
         case 2:
             break;
