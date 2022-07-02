@@ -14,7 +14,7 @@ void NovaVenda(){
     scanf(" %s", novo.CPF);
     if (!ProcuraCliente (novo.CPF)) {
         Cadastrar_Clientes();//Ainda não existe!
-        //LIMPAR TELA.
+        Limpar_Tela ();
     }
 
     //Procura a identificação da última venda para registrar o novo.
@@ -23,7 +23,7 @@ void NovaVenda(){
         novo.id_vendas++;
 
     printf ("Data: ");
-    scanf ("%d / %d / %d", &novo.compra.dia, &novo.compra.mes, &novo.compra.ano);
+    scanf ("%d/%d/%d", &novo.compra.dia, &novo.compra.mes, &novo.compra.ano);
     //Valores iniciais antes de qualquer compra.
     novo.valor_total = 0;
     novo.quant_prod = 0;
@@ -134,8 +134,8 @@ void MostrarProduto(int cod, int *estoque, float *valor){
     produto = fopen ("../Produtos.dat","rb");
     *estoque = 0;
     *valor = 0;
-    if (produto ==  NULL)
-        printf ("Erro ao abrir o arquivo dos produtos");
+    if (produto == NULL)
+        printf ("Erro ao abrir o arquivo dos produtos\n\n");
     else {
         //Encontrar o produto no arquivo
         while ((!encontrado) && (fread(&info, sizeof(Produto), 1, produto) != 0)) {
@@ -146,12 +146,12 @@ void MostrarProduto(int cod, int *estoque, float *valor){
         if (encontrado) {
             printf ("\nProduto: %s", info.nome);
             printf ("\nValor: %.2f", info.preco);
-            printf ("\nEstoque: %d\n", info.estoque);
+            printf ("\nEstoque: %d\n\n", info.estoque);
             *estoque = info.estoque;
             *valor = info.preco;
         }
         else
-            printf ("Não foi encontrado o produto!");
+            printf ("Não foi encontrado o produto!\n\n");
     }
 }
 
@@ -161,25 +161,23 @@ void ReduzirEstoque(int cod, int red){
     bool encontrado = false;
     int cont = 0;
 
-    prod = fopen("../Produtos.dat", "rb");
+    prod = fopen("../Produtos.dat", "r+b");
     if (prod == NULL)
         printf ("Erro de abertura do arquivo\n\n");
     else {
         while ((!encontrado) && (fread(&info, sizeof(Produto), 1, prod) != 0)) {
-            if (strcmp(info.id, cod) == 0)
+            if (info.id == cod)
                 encontrado = true;
             else
                 cont++;
         }
-        fclose(prod);
         if (encontrado) {
             info.estoque -= red;
-            prod = fopen("../Produtos.dat", "wb");
             fseek (prod, sizeof(Produto)*cont, SEEK_SET);
             fwrite (&info, sizeof(Produto), 1, prod);
-            fclose(prod);
         }
         else
             printf ("Produto não encontrado.\n\n");
+        fclose(prod);
     }
 }
