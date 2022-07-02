@@ -3,7 +3,7 @@
 #include "Funcoes.h"
 #include "Registros.h"
 
-// Função 3
+// Função 3 - Cadastrar e Alterar Dados de Clientes
 void Cadastrar_Clientes(){
     Clientes NovoCliente;
     FILE *arqv;
@@ -30,6 +30,10 @@ void Cadastrar_Clientes(){
     }
     fwrite(&NovoCliente, sizeof(Clientes), 1, arqv);
     fclose(arqv);
+}
+
+void Alterar_Clientes(){
+
 }
 
 // Função 5
