@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdbool.h>
 #include <strings.h>
 #include "Funcoes.h"
 #include "Registros.h"
