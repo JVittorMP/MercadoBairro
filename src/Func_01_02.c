@@ -5,7 +5,7 @@
 void Incluir_Produtos(){
     Produto NovoProduto; // É necessario alocar dinamicamente? Acho que não.
     FILE *arqv;
-    arqv = fopen("Produtos.dat", "ab");
+    arqv = fopen("../Produtos.dat", "ab");
     printf("Insira as informações do produto: \n\n");
     if(arqv != NULL)
     {
@@ -31,7 +31,7 @@ void Alterar_Produto(){
     pos = Identificar_Produto(); // Uso da Função para Identificar a Posição do Produto no Arquivo
     Produto alt;
     FILE *arqv;
-    arqv = fopen("Produtos.dat", "r+b");
+    arqv = fopen("../Produtos.dat", "r+b");
     pos = Identificar_Produto(); // Uso da Função para Identificar a Posição do Produto no Arquivo
     if(pos == 0)
         printf("Produto não cadastrado");
@@ -53,7 +53,7 @@ int Identificar_Produto(){
     int id_prod;
     Produto Ident;
     FILE *arqv;
-    arqv = fopen("Produtos.dat", "rb");
+    arqv = fopen("../Produtos.dat", "rb");
     if(arqv != NULL)
     {
         printf("Qual produto deseja alterar? (Insira id): ");

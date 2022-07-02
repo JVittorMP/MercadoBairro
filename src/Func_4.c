@@ -50,7 +50,7 @@ void NovaVenda(){
     //Por fim, a adição de mais um registro Venda ao arquivo.
     //Caso haja compra
     if (novo.quant_prod > 0) {
-        venda = fopen ("Vendas.dat", "ab");
+        venda = fopen ("../Vendas.dat", "ab");
         fwrite (&novo, sizeof(struct Vendas), 1, venda);
         fclose(venda);
         printf ("Compra feita com successo.");
@@ -64,7 +64,7 @@ bool ProcuraCliente(char cpf[13]){
     Clientes info;
     bool existe = false;
 
-    cliente = fopen ("Clientes.dat", "rb");
+    cliente = fopen ("../Clientes.dat", "rb");
     if (cliente == NULL)
         printf ("Erro ao abrir o arquivo dos clientes.");
     else {
@@ -83,7 +83,7 @@ int DefinirIdentificacaoDaVenda(){
     Vendas ultima;
     int id;
 
-    venda = fopen ("Vendas.dat", "rb");
+    venda = fopen ("../Vendas.dat", "rb");
     //Se o arquivo não existe, será retornado o valor 0.
     if (venda == NULL) {
         printf ("Erro na abertura do arquivo de vendas");
@@ -108,7 +108,7 @@ void AdicionarItemCompra(int cod, char cpf[13], bool *compraValida, float *preco
     printf ("Quantidade de itens do produto: ");
     scanf (" %d", &item.quant);
 
-    //Mostra as informações produto e sua disponibilidade no estoque.
+    //Mostra as informações do produto e sua disponibilidade no estoque.
     MostarProduto (item.id_prod, &estoque, &item.valor_uni);
 
     if (estoque < item.quant) {
@@ -120,7 +120,7 @@ void AdicionarItemCompra(int cod, char cpf[13], bool *compraValida, float *preco
         strcpy (item.CPF, cpf);
         item.id_venda = cod;
         item.valor_total = item.valor_uni * item.quant;
-        compra = fopen ("ItensCompra.dat", "ab");
+        compra = fopen ("../ItensCompra.dat", "ab");
         fwrite (&item, sizeof(struct ItensCompra), 1, compra);
         fclose(compra);
         ReduzirEstoque (item.id_prod, item.quant);
@@ -134,7 +134,7 @@ void MostrarProduto(int cod, int *estoque, float *valor){
     bool encontrado = false;
     Produto info;
 
-    produto = fopen ("Produtos.dat","rb");
+    produto = fopen ("../Produtos.dat","rb");
     *estoque = 0;
     *valor = 0;
     if (produto ==  NULL)
@@ -164,7 +164,7 @@ void ReduzirEstoque(int cod, int red){
     bool encontrado = false;
     int cont = 0;
 
-    prod = fopen("Produtos.dat", "rb");
+    prod = fopen("../Produtos.dat", "rb");
     if (prod == NULL)
         printf ("Erro de abertura do arquivo\n\n");
     else {
@@ -177,7 +177,7 @@ void ReduzirEstoque(int cod, int red){
         fclose(prod);
         if (encontrado) {
             info.estoque -= red;
-            prod = fopen("Produtos.dat", "wb");
+            prod = fopen("../Produtos.dat", "wb");
             fseek (prod, sizeof(Produto)*cont, SEEK_SET);
             fwrite (&info, sizeof(Produto), 1, prod);
             fclose(prod);
