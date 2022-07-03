@@ -1,13 +1,13 @@
 #include "Funcoes.h"
 #include "Registros.h"
 
-void ListarVendas () {
+void ListarVendas() {
     FILE *venda;
     Vendas compra;
     int opcao, cont = 0;
     char cpf[13], nome[30];
 
-    printf ("1.CPF\n2.Nome\nDeseja acessar por: ");
+    printf (" 1.CPF \n 2.Nome \n\n Deseja acessar por: ");
     scanf ("%d", &opcao);
     switch (opcao)
     {
@@ -26,7 +26,7 @@ void ListarVendas () {
     }
     Separar_Tela();
     if (strlen(cpf) < 13)
-        printf ("Não foi possívle acessar lista.\n\n");
+        printf ("Não foi possível acessar lista.\n\n");
     else {
         venda = fopen ("../Vendas.dat", "rb");
         if (venda == NULL)

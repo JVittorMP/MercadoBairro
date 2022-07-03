@@ -19,7 +19,7 @@ void AdicionarItemCompra();
 void MostrarProduto();
 void ReduzirEstoque();
 void ListarVendas();
-char CPFdoCliente();
+void CPFdoCliente();
 float ValorTotalDasVendas();
 
 // Funções de Clientes
