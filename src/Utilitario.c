@@ -19,5 +19,6 @@ void Sair_Menu(){
             sair = true;
         printf("\n");
     }
+    Limpar_Tela();
     Menu_Principal();
 }
