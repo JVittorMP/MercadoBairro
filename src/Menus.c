@@ -64,6 +64,7 @@ void Menu_Clientes(){
         case 2: // Atualizar Pontuação do Clientes
             break;
         case 3: // Atualizar Informações dos Clientes
+            Alterar_Clientes();
             break;
         case 4: // Clientes Entre 18 e 25 Anos
             Clientes_18_25();

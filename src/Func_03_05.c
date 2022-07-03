@@ -25,7 +25,7 @@ void Cadastrar_Clientes(){
         printf("Estado (UF): ");
         scanf(" %[^\n]s", NovoCliente.estado);
         printf("Pontos: ");
-        scanf(" %d", NovoCliente.pontos);
+        scanf(" %d", &NovoCliente.pontos);
     }
     fwrite(&NovoCliente, sizeof(Clientes), 1, arqv);
     fclose(arqv);
@@ -34,7 +34,37 @@ void Cadastrar_Clientes(){
 }
 
 void Alterar_Clientes(){
+    int pos; // Variável para guardar a posição
+    char CPF_cliente[13];
+    printf("Insira o CPF do cliente que deseja alterar: ");
+    scanf(" %[^\n]", &CPF_cliente);
+    if(ProcuraCliente(CPF_cliente)); // Verifica se o cliente existe
+    {
+        Clientes alt;
+        pos = Identificar_Cliente(); // Identifica a posição do cliente no arquivo
+    }
+    else
+        printf("Cliente não encontrado!");
+}
 
+int Identificar_Cliente(char CPF[13]){
+    FILE *arqv;
+    Clientes Ident;
+    int aux;
+    arqv = fopen("../Clientes.dat", "rb");
+    if(arqv !=  NULL)
+    {
+        while(!feof(arqv))
+        {
+            fread(&Ident, sizeof(Clientes), 1, arqv);
+            if(Ident.CPF == CPF)
+            {
+                fclose(arqv);
+                return aux; // Devolve a Posição
+            }
+            aux++;
+        }
+    }
 }
 
 // Função 5

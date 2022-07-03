@@ -27,6 +27,7 @@ void Cadastrar_Clientes();
 void Alterar_Clientes();
 void Listar_Pont_1000();
 void Clientes_18_25();
+int Identificar_Cliente();
 
 // Funções de Produtos
 void Incluir_Produtos();
