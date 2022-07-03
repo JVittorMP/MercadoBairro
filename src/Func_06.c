@@ -24,7 +24,7 @@ void ListarVendas () {
             printf ("Opção inválida!\n\n");
             break;
     }
-    Separar_Tela()
+    Separar_Tela();
     if (strlen(cpf) < 13)
         printf ("Não foi possívle acessar lista.\n\n");
     else {
@@ -38,12 +38,12 @@ void ListarVendas () {
                     printf ("Valor: %f\n", compra.valor_total);
                     printf ("Quantidade de produtos: %d\n", compra.quant_prod);
                     cont++;
-                    Separar_Tela ();
+                    Separar_Tela();
                 }
             }
             fclose(venda);
             if (cont == 0)
-                printf ("Cliente não encontrado.\n\n);
+                printf ("Cliente não encontrado.\n\n");
         }
     }
 }

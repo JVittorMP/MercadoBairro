@@ -9,6 +9,7 @@
 
 // Funções de Utilidade
 void Limpar_Tela();
+void Separar_Tela();
 
 void NovaVenda();
 bool ProcuraCliente();
