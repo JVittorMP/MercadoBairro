@@ -120,7 +120,7 @@ void Troca_Cliente(Clientes *pont) {
 }
 
 // Função 5
-float ValorTotalDasVendas (char cpf[13]) {
+float ValorTotal_Vendas (char cpf[13]) {
     FILE *venda;
     Vendas info;
     float total = 0;
