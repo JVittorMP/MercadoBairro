@@ -1,5 +1,6 @@
 #include "Funcoes.h"
 #include "Registros.h"
+#include <math.h>
 
 // Função 7
 void Listar_Pont_1000(){
@@ -22,6 +23,48 @@ void Listar_Pont_1000(){
     else
         printf("Falha na Abertura do Arquivo");
     fclose(arqv);
+}
+
+// Atualizar Pontuação
+void Atualizar_Pont(){
+    char CPF_cliente[13];
+    int pos;
+    float total;
+    Clientes NovoCliente;
+    printf("Insira o CPF do cliente cuja pontuação deseja atualizar: ");
+    scanf(" %[^\n]s", CPF_cliente);
+    if(ProcuraCliente(CPF_cliente)) // Verifica se o cliente existe
+    {
+        total = Soma(CPF_cliente);
+        pos = Identificar_Cliente(CPF_cliente);
+        FILE *arqv;
+        arqv = fopen("../Clientes.dat", "r+b");
+        fseek(arqv, sizeof(Clientes)*(pos-1), SEEK_SET);
+        fread(&NovoCliente, sizeof(Produto), 1, arqv);
+        NovoCliente.pontos = floor(total);
+        fseek(arqv, sizeof(Produto)*(pos-1), SEEK_SET);
+        fwrite(&NovoCliente, sizeof(Produto), 1, arqv);
+        fclose(arqv);
+    }
+}
+
+float Soma(char CPF[13]){
+    Vendas aux;
+    float total;
+    FILE *arqv;
+    arqv = fopen("../Vendas.dat", "rb");
+    if(arqv != NULL)
+    {
+        while(1)
+        {
+            fread(&aux, sizeof(Vendas), 1, arqv);
+            if(feof(arqv))
+                break;
+            if(strcmp(aux.CPF, CPF) == 0)
+                total += aux.valor_total;
+        }
+        return total;
+    }
 }
 
 // Função 8

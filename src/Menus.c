@@ -62,6 +62,7 @@ void Menu_Clientes(){
             Cadastrar_Clientes();
             break;
         case 2: // Atualizar Pontuação do Clientes
+            Atualizar_Pont();
             break;
         case 3: // Atualizar Informações dos Clientes
             Alterar_Clientes();

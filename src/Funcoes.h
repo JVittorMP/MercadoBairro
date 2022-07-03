@@ -29,6 +29,8 @@ void Listar_Pont_1000();
 void Clientes_18_25();
 int Identificar_Cliente();
 void Troca_Cliente();
+void Atualizar_Pont();
+float Soma();
 
 // Funções de Produtos
 void Incluir_Produtos();

@@ -30,7 +30,6 @@ void Cadastrar_Clientes(){
     fwrite(&NovoCliente, sizeof(Clientes), 1, arqv);
     fclose(arqv);
     Limpar_Tela();
-    Menu_Principal();
 }
 
 void Alterar_Clientes(){
@@ -42,14 +41,14 @@ void Alterar_Clientes(){
     {
         Clientes alt;
         FILE *arqv;
-        arqv = fopen("../Clientes.dat", "ab");
-        pos = Identificar_Cliente(); // Identifica a posição do cliente no arquivo
+        arqv = fopen("../Clientes.dat", "r+b");
+        pos = Identificar_Cliente(CPF_cliente); // Identifica a posição do cliente no arquivo
         fseek(arqv, sizeof(Clientes)*(pos-1), SEEK_SET);
         fread(&alt, sizeof(Produto), 1, arqv);
         Troca_Cliente(&alt); // Seleção da Informação a ser alterada
         fseek(arqv, sizeof(Produto)*(pos-1), SEEK_SET);
         fwrite(&alt, sizeof(Produto), 1, arqv);
-        fflush(arqv);
+        fclose(arqv);
     }
     else printf("Cliente não encontrado!");
 }

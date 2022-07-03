@@ -21,7 +21,7 @@ void NovaVenda(){
     //Procura a identificação da última venda para registrar o novo.
     novo.id_vendas = DefinirIdentificacaoDaVenda();
 
-    printf ("Data: ");
+    printf ("Data Da Venda: ");
     scanf (" %d/%d/%d", &novo.compra.dia, &novo.compra.mes, &novo.compra.ano);
     //Valores iniciais antes de qualquer compra.
     Separar_Tela ();
@@ -38,7 +38,7 @@ void NovaVenda(){
             novo.valor_total += valor;
         }
         //O loop continuará até que a compra seja finalizada.
-        printf ("Deseja finalizar compra?(s/n)  ");
+        printf ("Deseja finalizar compra? (S/N)  ");
         scanf (" %c", &finalizar_compra);
         Separar_Tela ();
     }
