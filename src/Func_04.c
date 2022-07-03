@@ -22,7 +22,7 @@ void NovaVenda(){
     novo.id_vendas = DefinirIdentificacaoDaVenda();
 
     printf ("Data: ");
-    scanf ("%d/%d/%d", &novo.compra.dia, &novo.compra.mes, &novo.compra.ano);
+    scanf (" %d/%d/%d", &novo.compra.dia, &novo.compra.mes, &novo.compra.ano);
     //Valores iniciais antes de qualquer compra.
     Separar_Tela ();
     novo.valor_total = 0;
@@ -82,7 +82,10 @@ int DefinirIdentificacaoDaVenda(){
     venda = fopen ("../Vendas.dat", "rb");
     //Se o arquivo não existe, será retornado o valor 0.
     if (venda == NULL)
-        printf ("Erro na abertura do arquivo de vendas");
+    {
+        Limpar_Tela();
+        printf("Erro na abertura do arquivo de vendas \n\n");
+    }
     //Caso contrário retornará um valor acima da última venda.
     else {
         while (fread(&ultima, sizeof(Vendas), 1, venda) != 0)
@@ -135,10 +138,7 @@ void MostrarProduto(int cod, int *estoque, float *valor){
     *estoque = 0;
     *valor = 0;
     if (produto == NULL)
-    {
-        Limpar_Tela();
         printf ("Erro ao abrir o arquivo dos produtos\n\n");
-    }
     else {
         //Encontrar o produto no arquivo
         while ((!encontrado) && (fread(&info, sizeof(Produto), 1, produto) != 0)) {
@@ -166,7 +166,7 @@ void ReduzirEstoque(int cod, int red){
 
     prod = fopen("../Produtos.dat", "r+b");
     if (prod == NULL)
-        printf ("Erro de abertura do arquivo\n\n");
+        printf ("Erro de abertura do arquivo \n\n");
     else {
         while ((!encontrado) && (fread(&info, sizeof(Produto), 1, prod) != 0)) {
             if (info.id == cod)
