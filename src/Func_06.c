@@ -7,7 +7,7 @@ void ListarVendas() {
     int opcao, cont = 0;
     char cpf[13], nome[30];
 
-    printf (" 1.CPF \n 2.Nome \n\n Deseja acessar por: ");
+    printf (" 1.CPF \n 2.Nome \n\n Deseja acessar por: \n\n");
     scanf ("%d", &opcao);
     switch (opcao)
     {
