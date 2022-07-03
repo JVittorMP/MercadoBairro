@@ -37,7 +37,7 @@ void NovaVenda(){
             novo.quant_prod++;
             novo.valor_total += valor;
         }
-        //O loop continuará até que a compra seja dinalizada.
+        //O loop continuará até que a compra seja finalizada.
         printf ("Deseja finalizar compra?(s/n)  ");
         scanf (" %c", &finalizar_compra);
         Separar_Tela ();
@@ -47,7 +47,7 @@ void NovaVenda(){
         venda = fopen ("../Vendas.dat", "ab");
         fwrite (&novo, sizeof(struct Vendas), 1, venda);
         fclose(venda);
-        printf ("Compra feita com successo.\n\n");
+        printf ("Compra feita com successo! \n\n");
         printf ("O valor total: %.2f\n", novo.valor_total);
     }
     else
@@ -81,7 +81,7 @@ int DefinirIdentificacaoDaVenda(){
 
     venda = fopen ("../Vendas.dat", "rb");
     //Se o arquivo não existe, será retornado o valor 0.
-    if (venda == NULL) 
+    if (venda == NULL)
         printf ("Erro na abertura do arquivo de vendas");
     //Caso contrário retornará um valor acima da última venda.
     else {
