@@ -89,7 +89,7 @@ int DefinirIdentificacaoDaVenda(){
         fclose(venda);
     }
     while (id < 0)
-        id++
+        id++;
     return (id + 1);
 }
 

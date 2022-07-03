@@ -38,6 +38,7 @@ void Menu_Vendas(){
     Limpar_Tela();
     switch(menu){
         case 1: // Registrar Nova Venda
+            NovaVenda();
             break;
         case 2: // Listar a Venda do Cliente
             break;
