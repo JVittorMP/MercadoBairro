@@ -43,9 +43,9 @@ void ListarVendas() {
                 }
             }
             fclose(venda);
-            Sair_Menu();
             if (cont == 0)
                 printf ("Cliente não encontrado.\n\n");
+            Sair_Menu();
         }
     }
 }
