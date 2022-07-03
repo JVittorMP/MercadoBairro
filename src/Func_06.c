@@ -4,16 +4,16 @@
 void ListarVendas () {
     FILE *venda;
     Vendas compra;
-    int opcao;
+    int opcao, cont = 0;
     char cpf[13], nome[30];
 
-    printf ("Deseja acessar por:\n1.CPF\n2.Nome");
+    printf ("1.CPF\n2.Nome\nDeseja acessar por: ");
     scanf ("%d", &opcao);
     switch (opcao)
     {
         case 1:
             printf ("Digite CPF: ");
-            scanf ("%[^\n]s", cpf);
+            scanf (" %[^\n]s", cpf);
             break;
         case 2:
             printf ("Digite nome: ");
@@ -24,7 +24,7 @@ void ListarVendas () {
             printf ("Opção inválida!\n\n");
             break;
     }
-    printf ("\n\n");
+    Separar_Tela()
     if (strlen(cpf) < 13)
         printf ("Não foi possívle acessar lista.\n\n");
     else {
@@ -37,15 +37,18 @@ void ListarVendas () {
                     printf ("Data: %d/%d/%d\n", compra.compra.dia, compra.compra.mes, compra.compra.ano);
                     printf ("Valor: %f\n", compra.valor_total);
                     printf ("Quantidade de produtos: %d\n", compra.quant_prod);
-                    //SEPARAR TELA
+                    cont++;
+                    Separar_Tela ();
                 }
             }
             fclose(venda);
+            if (cont == 0)
+                printf ("Cliente não encontrado.\n\n);
         }
     }
 }
 
-char CPFdoCliente (char nome[30], char *cpf) {
+void CPFdoCliente (char nome[30], char *cpf) {
     FILE *cliente;
     Clientes info;
     bool encontrado = false;
