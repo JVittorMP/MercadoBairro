@@ -39,38 +39,37 @@ void Atualizar_Pont(){
     scanf(" %[^\n]s", CPF_cliente);
     if(ProcuraCliente(CPF_cliente)) // Verifica se o cliente existe
     {
-        total = Soma(CPF_cliente);
+        total = ValorTotal_Vendas(CPF_cliente);
         pos = Identificar_Cliente(CPF_cliente);
         FILE *arqv;
         arqv = fopen("../Clientes.dat", "r+b");
         fseek(arqv, sizeof(Clientes)*(pos-1), SEEK_SET);
-        fread(&NovoCliente, sizeof(Produto), 1, arqv);
+        fread(&NovoCliente, sizeof(Clientes), 1, arqv);
         NovoCliente.pontos = floor(total);
         fseek(arqv, sizeof(Produto)*(pos-1), SEEK_SET);
-        fwrite(&NovoCliente, sizeof(Produto), 1, arqv);
+        fwrite(&NovoCliente, sizeof(Clientes), 1, arqv);
         fclose(arqv);
     }
     Limpar_Tela();
     Menu_Principal();
 }
 
-float Soma(char CPF[13]){
-    Vendas aux;
-    float total;
-    FILE *arqv;
-    arqv = fopen("../Vendas.dat", "rb");
-    if(arqv != NULL)
-    {
-        while(1)
-        {
-            fread(&aux, sizeof(Vendas), 1, arqv);
-            if(feof(arqv))
-                break;
-            if(strcmp(aux.CPF, CPF) == 0)
-                total += aux.valor_total;
+float ValorTotal_Vendas (char cpf[13]) {
+    FILE *venda;
+    Vendas info;
+    float total = 0;
+
+    venda = fopen("../Vendas.dat", "rb");
+    if (venda == NULL)
+        printf("Erro na abertura do arquivo de vendas");
+    else {
+        while (fread(&info, sizeof(Vendas), 1, venda) != 0) {
+            if (strcmp(info.CPF, cpf) == 0)
+                total += info.valor_total;
         }
-        return total;
     }
+    fclose(venda);
+    return (total);
 }
 
 // Função 8

@@ -12,6 +12,7 @@ void Limpar_Tela();
 void Separar_Tela();
 void Sair_Menu();
 
+// Funções de Vendas
 void NovaVenda();
 bool ProcuraCliente();
 int DefinirIdentificacaoDaVenda();
@@ -20,7 +21,7 @@ void MostrarProduto();
 void ReduzirEstoque();
 void ListarVendas();
 void CPFdoCliente();
-float ValorTotalDasVendas();
+float ValorTotal_Vendas();
 
 // Funções de Clientes
 void Cadastrar_Clientes();
@@ -30,7 +31,6 @@ void Clientes_18_25();
 int Identificar_Cliente();
 void Troca_Cliente();
 void Atualizar_Pont();
-float Soma();
 
 // Funções de Produtos
 void Incluir_Produtos();
