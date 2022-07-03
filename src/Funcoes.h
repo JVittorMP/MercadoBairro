@@ -25,7 +25,7 @@ float ValorTotalDasVendas();
 // Funções de Clientes
 void Cadastrar_Clientes();
 void Alterar_Clientes();
-void Listar_Clientes();
+void Listar_Pont_1000();
 void Clientes_18_25();
 
 // Funções de Produtos

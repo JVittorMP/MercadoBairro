@@ -29,6 +29,7 @@ void Cadastrar_Clientes(){
     }
     fwrite(&NovoCliente, sizeof(Clientes), 1, arqv);
     fclose(arqv);
+    Limpar_Tela();
     Menu_Principal();
 }
 

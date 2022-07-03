@@ -69,7 +69,7 @@ void Menu_Clientes(){
             Clientes_18_25();
             break;
         case 5: // Clientes Acima de 1000 Pontos
-            Listar_Clientes();
+            Listar_Pont_1000();
             break;
         case 9: // Retornar para o Menu Principal
             Menu_Principal();

@@ -8,9 +8,11 @@ void Exib_Produtos(){
     arqv = fopen("../Produtos.dat","rb");
     if(arqv != NULL)
     {
-        while(!feof(arqv))
+        while(1)
         {
             fread(&pol, sizeof(Produto), 1, arqv);
+            if(feof(arqv))
+                break;
             printf(" ID: %d \n", pol.id);
             printf(" Setor: %s \n", pol.setor);
             printf(" Nome: %s \n", pol.nome);
@@ -30,9 +32,11 @@ void Exib_Clientes(){
     arqv = fopen("../Clientes.dat","rb");
     if(arqv != NULL)
     {
-        while(!feof(arqv))
+        while(1)
         {
             fread(&pol, sizeof(Clientes), 1, arqv);
+            if(feof(arqv))
+                break;
             printf(" CPF: %s \n", pol.CPF);
             printf(" Nome: %s \n", pol.nome);
             printf(" Data de Nascimento: %d/%d/%d \n", pol.nascimento.dia, pol.nascimento.mes, pol.nascimento.ano);
@@ -52,9 +56,11 @@ void Exib_Vendas(){
     arqv = fopen("../Vendas.dat","rb");
     if(arqv != NULL)
     {
-        while(!feof(arqv))
+        while(1)
         {
             fread(&pol, sizeof(Vendas), 1, arqv);
+            if(feof(arqv))
+                break;
             printf(" ID: %d \n", pol.id_vendas);
             printf(" CPF Cliente: %s \n", pol.CPF);
             printf(" Data da Compra: %d/%d/%d \n", pol.compra.dia, pol.compra.mes, pol.compra.ano);

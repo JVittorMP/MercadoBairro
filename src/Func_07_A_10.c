@@ -2,7 +2,7 @@
 #include "Registros.h"
 
 // Função 7
-void Listar_Clientes(){
+void Listar_Pont_1000(){
     Clientes aux;
     FILE *arqv;
     arqv = fopen("../Clientes.dat", "rb");
@@ -10,9 +10,11 @@ void Listar_Clientes(){
     if(arqv != NULL)
     {
         printf("| Nome \t| Pontuação \t|");
-        while(!feof(arqv))
+        while(1)
         {
             fread(&aux, sizeof(Clientes), 1, arqv);
+            if(feof(arqv))
+                break;
             if(aux.pontos > 1000)
                 printf("| %s \t| %d \t|", aux.nome, aux.pontos);
         }
@@ -30,9 +32,11 @@ void Baixo_Estoque(){
     if(arqv != NULL)
     {
         printf("| Id \t| Setor \t| Nome \t| Preço \t| Validade \t| Estoque \t|");
-        while(!feof(arqv))
+        while(1)
         {
             fread(&aux, sizeof(Produto), 1, arqv);
+            if(feof(arqv))
+                break;
             if(aux.estoque < 5)
             {
                 printf("| %d \t| %s \t| %s \t| %.2lf \t", aux.id, aux.setor, aux.nome, aux.preco);
@@ -55,9 +59,11 @@ void Clientes_18_25(){
     if(arqv != NULL)
     {
         printf("| Nome \t| Idade \t|");
-        while(!feof(arqv))
+        while(1)
         {
             fread(&aux, sizeof(Clientes), 1, arqv);
+            if(feof(arqv))
+                break;
             if(aux.idade > 17 && aux.idade < 26)
             {
                 printf("| %s \t| %d \t|", aux.nome, aux.idade);
@@ -103,9 +109,11 @@ void Estoque_Setor(){
                 break;
         }
         Limpar_Tela();
-        while(!feof(arqv))
+        while(1)
         {
             fread(&aux, sizeof(Produto), 1, arqv);
+            if(feof(arqv))
+                break;
             if(strcmp(aux.setor, setor) == 0)
             {
                 printf("| %d \t| %s \t| %s \t| %.2lf \t", aux.id, aux.setor, aux.nome, aux.preco);
