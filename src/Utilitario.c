@@ -1,4 +1,5 @@
 #include "Funcoes.h"
+#include "Menus.h"
 
 void Limpar_Tela(){
     system("cls");
@@ -12,10 +13,11 @@ void Sair_Menu(){
     bool sair = false;
     char confirm;
     while(!sair){
-        printf("Deseja encerrar o programa? (S/N): ");
+        printf("Deseja retornar ao menu principal? (S/N): ");
         scanf(" %c", &confirm);
         if(confirm == 's' || confirm == 'S')
             sair = true;
         printf("\n");
     }
+    Menu_Principal();
 }
