@@ -1,5 +1,6 @@
 #include "Funcoes.h"
 #include "Registros.h"
+#include "Menus.h"
 #include <math.h>
 
 // Função 7
@@ -10,19 +11,22 @@ void Listar_Pont_1000(){
     printf("Clientes com mais de 1000 pontos: \n\n");
     if(arqv != NULL)
     {
-        printf("| Nome \t| Pontuação \t|");
         while(1)
         {
             fread(&aux, sizeof(Clientes), 1, arqv);
             if(feof(arqv))
                 break;
             if(aux.pontos > 1000)
-                printf("| %s \t| %d \t|", aux.nome, aux.pontos);
+            {
+                printf("Nome: %s ", aux.nome);
+                printf("Pontuação: %d", aux.pontos);
+            }
         }
     }
     else
         printf("Falha na Abertura do Arquivo");
     fclose(arqv);
+    Sair_Menu();
 }
 
 // Atualizar Pontuação
@@ -46,6 +50,8 @@ void Atualizar_Pont(){
         fwrite(&NovoCliente, sizeof(Produto), 1, arqv);
         fclose(arqv);
     }
+    Limpar_Tela();
+    Menu_Principal();
 }
 
 float Soma(char CPF[13]){
@@ -74,7 +80,6 @@ void Baixo_Estoque(){
     arqv = fopen("../Produtos.dat", "rb");
     if(arqv != NULL)
     {
-        printf("| Id \t| Setor \t| Nome \t| Preço \t| Validade \t| Estoque \t|");
         while(1)
         {
             fread(&aux, sizeof(Produto), 1, arqv);
@@ -82,14 +87,15 @@ void Baixo_Estoque(){
                 break;
             if(aux.estoque < 5)
             {
-                printf("| %d \t| %s \t| %s \t| %.2lf \t", aux.id, aux.setor, aux.nome, aux.preco);
-                printf("| %d/%d/%d \t| %d \t|", aux.validade.dia, aux.validade.mes, aux.validade.ano, aux.estoque);
+                printf("Nome: %s", aux.nome);
+                printf("Estoque: %d", aux.estoque);
             }
         }
     }
     else
         printf("Falha na Abertura do Arquivo");
     fclose(arqv);
+    Sair_Menu();
 }
 
 // Função 9
@@ -98,10 +104,9 @@ void Clientes_18_25(){
     int total = 0;
     FILE *arqv;
     arqv = fopen("../Clientes.dat", "rb");
-    printf("Clientes com mais de 1000 pontos: \n\n");
+    printf("Clientes com idade entre 18 e 25 anos: \n\n");
     if(arqv != NULL)
     {
-        printf("| Nome \t| Idade \t|");
         while(1)
         {
             fread(&aux, sizeof(Clientes), 1, arqv);
@@ -109,7 +114,8 @@ void Clientes_18_25(){
                 break;
             if(aux.idade > 17 && aux.idade < 26)
             {
-                printf("| %s \t| %d \t|", aux.nome, aux.idade);
+                printf("Nome: %s", aux.nome);
+                printf("Idade: %d", aux.idade);
                 total++;
             }
         }
@@ -118,11 +124,13 @@ void Clientes_18_25(){
         printf("Falha na Abertura do Arquivo");
     fclose(arqv);
     printf("Total de clientes entre 18 e 25 anos: %d", total);
+    Sair_Menu();
 }
 
 // Função 10
 void Estoque_Setor(){
     int valor;
+    int total;
     char setor[20];
     Produto aux;
     FILE *arqv;
@@ -159,9 +167,11 @@ void Estoque_Setor(){
                 break;
             if(strcmp(aux.setor, setor) == 0)
             {
-                printf("| %d \t| %s \t| %s \t| %.2lf \t", aux.id, aux.setor, aux.nome, aux.preco);
-                printf("| %d/%d/%d \t| %d \t|", aux.validade.dia, aux.validade.mes, aux.validade.ano, aux.estoque);
+                printf("%s = %d \n", aux.nome, aux.estoque);
+                total += aux.estoque;
             }
         }
     }
+    printf("Estoque do Setor: %d produtos \n\n", total);
+    Sair_Menu();
 }

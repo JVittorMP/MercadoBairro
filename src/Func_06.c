@@ -7,8 +7,9 @@ void ListarVendas() {
     int opcao, cont = 0;
     char cpf[13], nome[30];
 
-    printf (" 1.CPF \n 2.Nome \n\n Deseja acessar por: \n\n");
+    printf (" 1. CPF \n 2. Nome \n\n Deseja acessar por: ");
     scanf ("%d", &opcao);
+    Limpar_Tela();
     switch (opcao)
     {
         case 1:
@@ -42,6 +43,7 @@ void ListarVendas() {
                 }
             }
             fclose(venda);
+            Sair_Menu();
             if (cont == 0)
                 printf ("Cliente não encontrado.\n\n");
         }
@@ -63,5 +65,5 @@ void CPFdoCliente (char nome[30], char *cpf) {
         }
     }
     fclose(cliente);
-    strcpy(*cpf, info.CPF);
+    strcpy(cpf, info.CPF);
 }

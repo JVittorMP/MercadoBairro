@@ -53,6 +53,7 @@ void NovaVenda(){
     else
         printf("Ocorreu um erro ou a compra foi cancelada.");
     Separar_Tela ();
+    Sair_Menu();
 }
 
 bool ProcuraCliente(char cpf[13]){
