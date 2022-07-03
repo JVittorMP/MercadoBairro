@@ -18,8 +18,8 @@ void Listar_Pont_1000(){
                 break;
             if(aux.pontos > 1000)
             {
-                printf("Nome: %s ", aux.nome);
-                printf("Pontuação: %d", aux.pontos);
+                printf("Nome: %s \n", aux.nome);
+                printf("Pontuação: %d \n\n", aux.pontos);
             }
         }
     }
