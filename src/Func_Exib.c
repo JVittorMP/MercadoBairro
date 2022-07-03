@@ -8,7 +8,7 @@ void Exib_Produtos(){
     arqv = fopen("../Produtos.dat","rb");
     if(arqv != NULL)
     {
-        printf("| ID \t| Setor \t| Nome \t| Preço \t| Validade \t| Estoque \t| \n");
+        printf("| ID \t| Setor \t| Nome \t\t| Preço \t| Validade \t| Estoque \t| \n");
         while(!feof(arqv))
         {
             fread(&pol, sizeof(Produto), 1, arqv);
@@ -27,7 +27,7 @@ void Exib_Clientes(){
     arqv = fopen("../Clientes.dat","rb");
     if(arqv != NULL)
     {
-        printf("| CPF \t| Nome \t| Data de Nascimento \t| idade \t| Endereço \t| Cidade \t| Estado \t| Pontos \t|");
+        printf("| CPF \t| Nome \t\t\t| Data de Nascimento \t| idade \t| Endereço \t| Cidade \t| Estado \t| Pontos \t|");
         while(!feof(arqv))
         {
             fread(&pol, sizeof(Clientes), 1, arqv);
@@ -49,7 +49,7 @@ void Exib_Vendas(){
         printf("| ID \t| CPF do Cliente \t| Data da Compra \t| Valor Total \t| Quantidade de Produtos \t|");
         while(!feof(arqv))
         {
-            fread(&pol, sizeof(Vendas), 2, arqv);
+            fread(&pol, sizeof(Vendas), 1, arqv);
             printf("| %d \t| %s \t| %d/%d/%d \t", pol.id_vendas, pol.CPF, pol.compra.dia, pol.compra.mes, pol.compra.ano);
             printf("| %.2f \t| %d \t|", pol.valor_total, pol.quant_prod);
         }
