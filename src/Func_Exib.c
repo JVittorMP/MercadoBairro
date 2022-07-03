@@ -11,12 +11,12 @@ void Exib_Produtos(){
         while(!feof(arqv))
         {
             fread(&pol, sizeof(Produto), 1, arqv);
-            printf(" ID: %d", pol.id);
-            printf(" Setor: %s", pol.setor);
-            printf(" Nome: %s", pol.nome);
-            printf(" Preço: %.2lf", pol.preco);
-            printf(" Validade: %d/%d/%d", pol.validade.dia, pol.validade.mes, pol.validade.ano);
-            printf(" Estoque: %d", pol.estoque);
+            printf(" ID: %d \n", pol.id);
+            printf(" Setor: %s \n", pol.setor);
+            printf(" Nome: %s \n", pol.nome);
+            printf(" Preço: %.2lf \n", pol.preco);
+            printf(" Validade: %d/%d/%d \n", pol.validade.dia, pol.validade.mes, pol.validade.ano);
+            printf(" Estoque: %d \n\n", pol.estoque);
         }
     }
     fclose(arqv);
@@ -33,12 +33,12 @@ void Exib_Clientes(){
         while(!feof(arqv))
         {
             fread(&pol, sizeof(Clientes), 1, arqv);
-            printf(" CPF: %s", pol.CPF);
-            printf(" Nome: %s", pol.nome);
-            printf(" Data de Nascimento: %d/%d/%d", pol.nascimento.dia, pol.nascimento.mes, pol.nascimento.ano);
-            printf(" Idade: %d", pol.idade);
-            printf(" Endereço: %s | %s - %s", pol.endereco, pol.cidade, pol.estado);
-            printf(" Pontuação: %d", pol.pontos);
+            printf(" CPF: %s \n", pol.CPF);
+            printf(" Nome: %s \n", pol.nome);
+            printf(" Data de Nascimento: %d/%d/%d \n", pol.nascimento.dia, pol.nascimento.mes, pol.nascimento.ano);
+            printf(" Idade: %d \n", pol.idade);
+            printf(" Endereço: %s | %s - %s \n", pol.endereco, pol.cidade, pol.estado);
+            printf(" Pontuação: %d \n\n", pol.pontos);
         }
     }
     fclose(arqv);
@@ -55,11 +55,11 @@ void Exib_Vendas(){
         while(!feof(arqv))
         {
             fread(&pol, sizeof(Vendas), 1, arqv);
-            printf(" ID: %d", pol.id_vendas);
-            printf(" CPF Cliente: %s", pol.CPF);
-            printf(" Data da Compra: %d/%d/%d", pol.compra.dia, pol.compra.mes, pol.compra.ano);
-            printf(" Valor Total: %.2f", pol.valor_total);
-            printf(" Quantidade de Produtos: %d", pol.quant_prod);
+            printf(" ID: %d \n", pol.id_vendas);
+            printf(" CPF Cliente: %s \n", pol.CPF);
+            printf(" Data da Compra: %d/%d/%d \n", pol.compra.dia, pol.compra.mes, pol.compra.ano);
+            printf(" Valor Total: %.2f \n", pol.valor_total);
+            printf(" Quantidade de Produtos: %d \n\n", pol.quant_prod);
         }
     }
     fclose(arqv);

@@ -1,6 +1,5 @@
 #include "Funcoes.h"
 #include "Menus.h"
-#include "Registros.h"
 
 void Menu_Principal(){
     int menu;
@@ -41,6 +40,7 @@ void Menu_Vendas(){
             NovaVenda();
             break;
         case 2: // Listar a Venda do Cliente
+            ListarVendas();
             break;
         case 9: // Retornar para o Menu Principal
             Menu_Principal();
