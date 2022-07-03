@@ -45,7 +45,7 @@ void Alterar_Produto(){
     {
         fseek(arqv, sizeof(Produto)*(pos-1), SEEK_SET);
         fread(&alt, sizeof(Produto), 1, arqv);
-        Troca(&alt); // Seleção da Informação a ser alterada
+        Troca_Prod(&alt); // Seleção da Informação a ser alterada
         fseek(arqv, sizeof(Produto)*(pos-1), SEEK_SET);
         fwrite(&alt, sizeof(Produto), 1, arqv);
         fflush(arqv);
@@ -55,7 +55,7 @@ void Alterar_Produto(){
     Menu_Principal();
 }
 
-void Troca(Produto *pont){ // Altera os valores no registro
+void Troca_Prod(Produto *pont){ // Altera os valores no registro
     int aux;
     printf(" 1. Identificação \n 2. Setor \n 3. Nome \n");
     printf(" 4. Preço \n 5. Validade \n 6. Estoque \n 9. Sair \n\n");

@@ -28,11 +28,12 @@ void Alterar_Clientes();
 void Listar_Pont_1000();
 void Clientes_18_25();
 int Identificar_Cliente();
+void Troca_Cliente();
 
 // Funções de Produtos
 void Incluir_Produtos();
 void Alterar_Produto();
-void Troca();
+void Troca_Prod();
 int Identificar_Produto();
 void Baixo_Estoque();
 void Estoque_Setor();

@@ -41,16 +41,23 @@ void Alterar_Clientes(){
     if(ProcuraCliente(CPF_cliente)); // Verifica se o cliente existe
     {
         Clientes alt;
+        FILE *arqv;
+        arqv = fopen("../Clientes.dat", "ab");
         pos = Identificar_Cliente(); // Identifica a posição do cliente no arquivo
+        fseek(arqv, sizeof(Clientes)*(pos-1), SEEK_SET);
+        fread(&alt, sizeof(Produto), 1, arqv);
+        Troca_Cliente(&alt); // Seleção da Informação a ser alterada
+        fseek(arqv, sizeof(Produto)*(pos-1), SEEK_SET);
+        fwrite(&alt, sizeof(Produto), 1, arqv);
+        fflush(arqv);
     }
-    else
-        printf("Cliente não encontrado!");
+    if(!ProcuraCliente(CPF_cliente)) printf("Cliente não encontrado!");
 }
 
 int Identificar_Cliente(char CPF[13]){
     FILE *arqv;
     Clientes Ident;
-    int aux;
+    int aux = 1;
     arqv = fopen("../Clientes.dat", "rb");
     if(arqv !=  NULL)
     {
@@ -64,6 +71,50 @@ int Identificar_Cliente(char CPF[13]){
             }
             aux++;
         }
+    }
+}
+
+void Troca_Cliente(Clientes *pont) {
+    int aux;
+    printf(" 1. CPF \n 2. Nome \n 3. Data de Nascimento \n");
+    printf(" 4. Idade \n 5. Endereço \n 6. Cidade \n");
+    printf(" 7. Estado \n 8. Pontuação \n 9. Sair \n\n");
+    printf("Qual informação deseja alterar? ");
+    scanf(" %d", &aux);
+    Limpar_Tela();
+    switch (aux) {
+        case 1:
+            printf("Insira o novo CPF: ");
+            scanf(" %[^\n]s", &pont->CPF);
+            break;
+        case 2:
+            printf("Insira o novo nome: ");
+            scanf(" %[^\n]s", &pont->nome);
+            break;
+        case 3:
+            printf("Insira a nova data de nascimento (dia/mês/ano): ");
+            scanf(" %d/%d/%d", &pont->nascimento.dia, &pont->nascimento.mes, &pont->nascimento.ano);
+            break;
+        case 4:
+            printf("Insira a nova idade: ");
+            scanf(" %d", &pont->idade);
+            break;
+        case 5:
+            printf("Insira o novo endereço: ");
+            scanf(" %[^\n]s", &pont->endereco);
+            break;
+        case 6:
+            printf("Insira a nova cidade: ");
+            scanf(" %d", &pont->cidade);
+            break;
+        case 7:
+            printf("Insira o novo estado: ");
+            scanf(" %[^\n]s", &pont->estado);
+        case 8:
+            printf("Insira a nova Pontuação: ");
+            scanf(" %d", &pont->pontos);
+        case 9:
+            break;
     }
 }
 
