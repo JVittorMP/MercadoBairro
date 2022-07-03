@@ -33,22 +33,13 @@ void Incluir_Produtos(){
 void Alterar_Produto(){
     int pos; // Variável para guardar a posição
     Produto alt;
-    bool Saida = false;
-    char confirma;
-
     pos = Identificar_Produto(); // Uso da Função para Identificar a Posição do Produto no Arquivo
     FILE *arqv;
     arqv = fopen("../Produtos.dat", "r+b");
     if(pos == 0){
         printf("\n"); // Pula Linha Para Separar os 'Printf'
         printf("Produto não Cadastrado! \n\n");
-        while(!Saida)
-        {
-            printf("Deseja retornar ao menu? (S/N) ");
-            scanf(" %c", &confirma);
-            if(confirma == 'S' || confirma == 's')
-                Saida = true;
-        }
+        Sair_Menu();
     }
     else // Troca da informação do Produto
     {
@@ -93,7 +84,7 @@ void Troca(Produto *pont){ // Altera os valores no registro
             scanf(" %d/%d/%d", &pont->validade.dia, &pont->validade.mes, &pont->validade.ano);
             break;
         case 6:
-            printf("Insira o novo : ");
+            printf("Insira a nova quantidade em estoque: ");
             scanf(" %d", &pont->estoque);
             break;
         case 9:
