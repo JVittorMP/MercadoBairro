@@ -25,6 +25,8 @@ void Incluir_Produtos(){
     }
     fwrite(&NovoProduto, sizeof(Produto), 1, arqv);
     fclose(arqv);
+    Limpar_Tela();
+    Menu_Principal();
 }
 
 // Função 2
@@ -59,7 +61,7 @@ void Alterar_Produto(){
     }
     fclose(arqv);
     Limpar_Tela();
-    Menu_Produto();
+    Menu_Principal();
 }
 
 void Troca(Produto *pont){ // Altera os valores no registro
