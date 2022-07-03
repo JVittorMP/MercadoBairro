@@ -45,7 +45,7 @@ void ListarVendas () {
     }
 }
 
-char CPFdoCliente (char nome[30], char *cpf) {
+char CPFdoCliente(char nome[30], char *cpf) {
     FILE *cliente;
     Clientes info;
     bool encontrado = false;

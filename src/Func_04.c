@@ -106,7 +106,7 @@ void AdicionarItemCompra(int cod, char cpf[13], bool *compraValida, float *preco
     scanf (" %d", &item.quant);
 
     //Mostra as informações do produto e sua disponibilidade no estoque.
-    MostarProduto (item.id_prod, &estoque, &item.valor_uni);
+    MostrarProduto (item.id_prod, &estoque, &item.valor_uni);
 
     if (estoque < item.quant) {
         printf ("Não há quantidade disponível do produto.");
