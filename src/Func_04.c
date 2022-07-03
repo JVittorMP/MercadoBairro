@@ -19,41 +19,39 @@ void NovaVenda(){
 
     //Procura a identificação da última venda para registrar o novo.
     novo.id_vendas = DefinirIdentificacaoDaVenda();
-    while (novo.id_vendas <= 0)
-        novo.id_vendas++;
 
     printf ("Data: ");
     scanf ("%d/%d/%d", &novo.compra.dia, &novo.compra.mes, &novo.compra.ano);
     //Valores iniciais antes de qualquer compra.
+    Separar_Tela ();
     novo.valor_total = 0;
     novo.quant_prod = 0;
 
-    do {
-        //Adiciona mais um registro no arquivo ItensCompra.
-        //E muda por referência a disponibilidade do produto.
-        AdicionarItemCompra (novo.id_vendas, novo.CPF, &itemDisp, &valor);
+    while ((finalizar_compra != 's') && (finalizar_compra != 'S')) {
+        //Adiciona mais um registro no arquivo ItensCompra e muda por referência a disponibilidade do produto.
         //Dentro desta função há outra função que irá mostrar as informações do produto.
         //Caso o produto esteja disponível, informações serão adicionadas no registro da venda.
+        AdicionarItemCompra (novo.id_vendas, novo.CPF, &itemDisp, &valor);
         if (itemDisp) {
             novo.quant_prod++;
             novo.valor_total += valor;
         }
         //O loop continuará até que a compra seja dinalizada.
-        printf ("Deseja finalizar compra? s/n");
-        scanf ("%c", &finalizar_compra);
-        //LIMPAR TELA.
-    }while ((finalizar_compra != 's') && (finalizar_compra != 'S'));
-
-    //Por fim, a adição de mais um registro Venda ao arquivo.
-    //Caso haja compra
+        printf ("Deseja finalizar compra?(s/n)  ");
+        scanf (" %c", &finalizar_compra);
+        Separar_Tela ();
+    }
+    //Por fim, a adição de mais um registro Venda ao arquivo, caso haja compra
     if (novo.quant_prod > 0) {
         venda = fopen ("../Vendas.dat", "ab");
         fwrite (&novo, sizeof(struct Vendas), 1, venda);
         fclose(venda);
-        printf ("Compra feita com successo.");
+        printf ("Compra feita com successo.\n\n");
+        printf ("O valor total: %.2f\n", novo.valor_total);
     }
     else
         printf("Ocorreu um erro ou a compra foi cancelada.");
+    Separar_Tela ();
 }
 
 bool ProcuraCliente(char cpf[13]){
@@ -82,17 +80,17 @@ int DefinirIdentificacaoDaVenda(){
 
     venda = fopen ("../Vendas.dat", "rb");
     //Se o arquivo não existe, será retornado o valor 0.
-    if (venda == NULL) {
+    if (venda == NULL) 
         printf ("Erro na abertura do arquivo de vendas");
-        return (0);
-    }
-        //Caso contrário retornará um valor acima da última venda.
+    //Caso contrário retornará um valor acima da última venda.
     else {
         while (fread(&ultima, sizeof(Vendas), 1, venda) != 0)
             id = ultima.id_vendas;
         fclose(venda);
-        return (id+1);
     }
+    while (id < 0)
+        id++
+    return (id + 1);
 }
 
 void AdicionarItemCompra(int cod, char cpf[13], bool *compraValida, float *preco){
@@ -123,6 +121,7 @@ void AdicionarItemCompra(int cod, char cpf[13], bool *compraValida, float *preco
         ReduzirEstoque (item.id_prod, item.quant);
         *compraValida = true;
         *preco = item.valor_total;
+        printf ("Registro da compra do item feito com sucesso!\n\n");
     }
 }
 
