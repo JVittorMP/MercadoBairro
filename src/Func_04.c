@@ -135,7 +135,10 @@ void MostrarProduto(int cod, int *estoque, float *valor){
     *estoque = 0;
     *valor = 0;
     if (produto == NULL)
+    {
+        Limpar_Tela();
         printf ("Erro ao abrir o arquivo dos produtos\n\n");
+    }
     else {
         //Encontrar o produto no arquivo
         while ((!encontrado) && (fread(&info, sizeof(Produto), 1, produto) != 0)) {

@@ -38,7 +38,7 @@ void Alterar_Clientes(){
     char CPF_cliente[13];
     printf("Insira o CPF do cliente que deseja alterar: ");
     scanf(" %[^\n]", &CPF_cliente);
-    if(ProcuraCliente(CPF_cliente)); // Verifica se o cliente existe
+    if(ProcuraCliente(CPF_cliente)) // Verifica se o cliente existe
     {
         Clientes alt;
         FILE *arqv;
@@ -51,7 +51,7 @@ void Alterar_Clientes(){
         fwrite(&alt, sizeof(Produto), 1, arqv);
         fflush(arqv);
     }
-    if(!ProcuraCliente(CPF_cliente)) printf("Cliente não encontrado!");
+    else printf("Cliente não encontrado!");
 }
 
 int Identificar_Cliente(char CPF[13]){
