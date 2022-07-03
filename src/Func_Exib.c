@@ -1,6 +1,7 @@
 #include "Funcoes.h"
 #include "Registros.h"
 
+// Exibe os Produtos Registrados
 void Exib_Produtos(){
     Produto pol;
     FILE *arqv;
@@ -19,6 +20,7 @@ void Exib_Produtos(){
     Sair_Menu();
 }
 
+// Exibe os Clientes Registrados
 void Exib_Clientes(){
     Clientes pol;
     FILE *arqv;
@@ -37,6 +39,7 @@ void Exib_Clientes(){
     Sair_Menu();
 }
 
+// Exibe as Vendas Registradas
 void Exib_Vendas(){
     Vendas pol;
     FILE *arqv;
