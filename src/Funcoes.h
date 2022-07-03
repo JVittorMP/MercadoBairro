@@ -32,5 +32,6 @@ void Alterar_Produto();
 void Troca();
 int Identificar_Produto();
 void Baixo_Estoque();
+void Estoque_Setor();
 
 #endif

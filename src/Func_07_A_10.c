@@ -70,3 +70,47 @@ void Clientes_18_25(){
     fclose(arqv);
     printf("Total de clientes entre 18 e 25 anos: %d", total);
 }
+
+// Função 10
+void Estoque_Setor(){
+    int valor;
+    char setor[20];
+    Produto aux;
+    FILE *arqv;
+    arqv = fopen("../Produtos.dat", "rb");
+    if(arqv != NULL)
+    {
+        // Essa parte serve pra evitar que o usuário digite a enntrada errada
+        printf(" 1. Higiene e Limpeza \n 2. Bebidas \n");
+        printf(" 3. Frios \n 4. Padaria \n 5. Açougue \n\n");
+        printf("Selecione o setor desejado: ");
+        scanf(" %d", &valor);
+        switch(valor){
+            case 1:
+                strcpy(setor, "Higiene e Limpeza");
+                break;
+            case 2:
+                strcpy(setor, "Bebidas");
+                break;
+            case 3:
+                strcpy(setor, "Frios");
+                break;
+            case 4:
+                strcpy(setor, "Padaria");
+                break;
+            case 5:
+                strcpy(setor, "Açougue");
+                break;
+        }
+        Limpar_Tela();
+        while(!feof(arqv))
+        {
+            fread(&aux, sizeof(Produto), 1, arqv);
+            if(strcmp(aux.setor, setor) == 0)
+            {
+                printf("\t| %d \t| %s \t| %s \t| %.2lf \t", aux.id, aux.setor, aux.nome, aux.preco);
+                printf("| %d/%d/%d \t| %d \t|", aux.validade.dia, aux.validade.mes, aux.validade.ano, aux.estoque);
+            }
+        }
+    }
+}

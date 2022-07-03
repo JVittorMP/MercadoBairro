@@ -89,6 +89,7 @@ void Menu_Produto(){
             Alterar_Produto();
             break;
         case 3: // Mostrar Estoque por Setor
+            Estoque_Setor();
             break;
         case 4: // Mostrar Produtos com Estoque Baixo
             Baixo_Estoque();
