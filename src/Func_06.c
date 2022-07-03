@@ -19,7 +19,7 @@ void ListarVendas() {
         case 2:
             printf ("Digite nome: ");
             scanf (" %[^\n]s", nome);
-            CPFdoCliente (nome, &cpf);
+            CPFdoCliente (nome, cpf);
             break;
         default:
             printf ("Opção inválida!\n\n");
@@ -43,14 +43,14 @@ void ListarVendas() {
                 }
             }
             fclose(venda);
-            Sair_Menu();
             if (cont == 0)
                 printf ("Cliente não encontrado.\n\n");
+            Sair_Menu();
         }
     }
 }
 
-void CPFdoCliente (char nome[30], char *cpf) {
+void CPFdoCliente (char nome[30], char *cpf[13]) {
     FILE *cliente;
     Clientes info;
     bool encontrado = false;
