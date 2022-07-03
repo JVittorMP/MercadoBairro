@@ -5,5 +5,6 @@ void Menu_Principal();
 void Menu_Vendas();
 void Menu_Clientes();
 void Menu_Produto();
+void Menu_Exib();
 
 #endif

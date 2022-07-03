@@ -10,6 +10,7 @@
 // Funções de Utilidade
 void Limpar_Tela();
 void Separar_Tela();
+void Sair_Menu();
 
 void NovaVenda();
 bool ProcuraCliente();
@@ -34,5 +35,10 @@ void Troca();
 int Identificar_Produto();
 void Baixo_Estoque();
 void Estoque_Setor();
+
+// Funções de Exibição
+void Exib_Produtos();
+void Exib_Clientes();
+void Exib_Vendas();
 
 #endif

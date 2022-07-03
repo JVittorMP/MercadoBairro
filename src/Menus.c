@@ -5,7 +5,8 @@
 void Menu_Principal(){
     int menu;
     printf("Menu Principal \n\n");
-    printf(" 1. Vendas \n 2. Clientes \n 3. Produtos \n 9. Sair \n\n");
+    printf(" 1. Vendas \n 2. Clientes \n 3. Produtos \n");
+    printf(" 4. Exibição \n 9. Sair \n\n");
     printf("Insira a opção desejada: ");
     scanf(" %d", &menu);
     Limpar_Tela();
@@ -19,6 +20,8 @@ void Menu_Principal(){
         case 3: // Menu Produtos
             Menu_Produto();
             break;
+        case 4: // Menu Exibição
+            Menu_Exib();
         case 9: // Saída do Menu
             break;
         default:
@@ -95,6 +98,30 @@ void Menu_Produto(){
             Baixo_Estoque();
             break;
         case 9: // Retornar para o Menu Principal
+            Menu_Principal();
+            break;
+    }
+}
+
+void Menu_Exib(){
+    int menu;
+    printf("Menu de Exibição \n\n");
+    printf(" 1. Exibir Produtos \n 2. Exibir Clientes \n");
+    printf(" 3. Exibir Vendas \n 9. Sair \n\n");
+    printf("Insira a opção desejada: ");
+    scanf(" %d", &menu);
+    Limpar_Tela();
+    switch(menu){
+        case 1: // Exibir Produtos
+            Exib_Produtos();
+            break;
+        case 2: // Exibir Clientes
+            Exib_Clientes();
+            break;
+        case 3: // Exibir Vendas
+            Exib_Vendas();
+            break;
+        case 9:
             Menu_Principal();
             break;
     }
