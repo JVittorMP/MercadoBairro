@@ -43,6 +43,7 @@ void Alterar_Clientes(){
     pos = Identificar_Cliente(CPF_cliente); // Identifica a posição do cliente no arquivo
     if(ProcuraCliente(CPF_cliente)) // Verifica se o cliente existe
     {
+        arqv = fopen("../Cliente.dat", "r+b");
         fseek(arqv, sizeof(Clientes)*(pos-1), SEEK_SET);
         fread(&alt, sizeof(Produto), 1, arqv);
         Troca_Cliente(&alt); // Seleção da Informação a ser alterada
@@ -120,7 +121,7 @@ void Troca_Cliente(Clientes *pont) {
 }
 
 // Função 5
-float ValorTotal_Vendas (char cpf[13]) {
+float ValorTotal_Vendas (char cpf[13]){
     FILE *venda;
     Vendas info;
     float total = 0;

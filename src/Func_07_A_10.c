@@ -45,31 +45,13 @@ void Atualizar_Pont(){
         arqv = fopen("../Clientes.dat", "r+b");
         fseek(arqv, sizeof(Clientes)*(pos-1), SEEK_SET);
         fread(&NovoCliente, sizeof(Clientes), 1, arqv);
-        NovoCliente.pontos = floor(total);
+        NovoCliente.pontos = (int) total;
         fseek(arqv, sizeof(Produto)*(pos-1), SEEK_SET);
         fwrite(&NovoCliente, sizeof(Clientes), 1, arqv);
         fclose(arqv);
     }
     Limpar_Tela();
     Menu_Principal();
-}
-
-float ValorTotal_Vendas (char cpf[13]) {
-    FILE *venda;
-    Vendas info;
-    float total = 0;
-
-    venda = fopen("../Vendas.dat", "rb");
-    if (venda == NULL)
-        printf("Erro na abertura do arquivo de vendas");
-    else {
-        while (fread(&info, sizeof(Vendas), 1, venda) != 0) {
-            if (strcmp(info.CPF, cpf) == 0)
-                total += info.valor_total;
-        }
-    }
-    fclose(venda);
-    return (total);
 }
 
 // Função 8
@@ -86,8 +68,8 @@ void Baixo_Estoque(){
                 break;
             if(aux.estoque < 5)
             {
-                printf("Nome: %s", aux.nome);
-                printf("Estoque: %d", aux.estoque);
+                printf("Nome: %s \n", aux.nome);
+                printf("Estoque: %d \n\n", aux.estoque);
             }
         }
     }
@@ -113,8 +95,8 @@ void Clientes_18_25(){
                 break;
             if(aux.idade > 17 && aux.idade < 26)
             {
-                printf("Nome: %s", aux.nome);
-                printf("Idade: %d", aux.idade);
+                printf("Nome: %s \n", aux.nome);
+                printf("Idade: %d \n\n", aux.idade);
                 total++;
             }
         }
@@ -122,7 +104,7 @@ void Clientes_18_25(){
     else
         printf("Falha na Abertura do Arquivo");
     fclose(arqv);
-    printf("Total de clientes entre 18 e 25 anos: %d", total);
+    printf("Total de clientes entre 18 e 25 anos: %d \n", total);
     Sair_Menu();
 }
 
@@ -171,6 +153,6 @@ void Estoque_Setor(){
             }
         }
     }
-    printf("Estoque do Setor: %d produtos \n\n", total);
+    printf("Estoque do Setor: %d itens \n\n", total);
     Sair_Menu();
 }
