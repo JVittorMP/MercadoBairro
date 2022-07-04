@@ -49,9 +49,10 @@ void Atualizar_Pont(){
         fseek(arqv, sizeof(Produto)*(pos-1), SEEK_SET);
         fwrite(&NovoCliente, sizeof(Clientes), 1, arqv);
         fclose(arqv);
+        printf("\nCliente: %s \n", NovoCliente.nome);
+        printf("Nova Pontuação: %d \n\n", NovoCliente.pontos);
     }
-    Limpar_Tela();
-    Menu_Principal();
+    Sair_Menu();
 }
 
 // Função 8

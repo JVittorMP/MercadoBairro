@@ -43,7 +43,7 @@ void Alterar_Clientes(){
     {
         pos = Identificar_Cliente(CPF_cliente); // Identifica a posição do cliente no arquivo
         FILE *arqv;
-        arqv = fopen("../Cliente.dat", "r+b");
+        arqv = fopen("../Clientes.dat", "r+b");
         fseek(arqv, sizeof(Clientes)*(pos-1), SEEK_SET);
         fread(&alt, sizeof(Clientes), 1, arqv);
         Troca_Cliente(&alt); // Seleção da Informação a ser alterada
@@ -52,8 +52,7 @@ void Alterar_Clientes(){
         fclose(arqv);
     }
     else printf("Cliente não encontrado!");
-    Limpar_Tela();
-    Menu_Principal();
+    Sair_Menu();
 }
 
 int Identificar_Cliente(char CPF[13]){
