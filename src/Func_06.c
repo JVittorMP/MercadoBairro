@@ -57,7 +57,7 @@ void CPFdoCliente (char nome[30], char *cpf[13]) {
 
     cliente = fopen ("../Clientes.dat", "rb");
     if (cliente == NULL)
-        printf ("Erro na abertura do arquuivo de clientes.\n\n");
+        printf ("Erro na abertura do arquivo de clientes.\n\n");
     else {
         while ((!encontrado) && (fread(&info, sizeof(Clientes), 1, cliente) != 0)) {
             if (strcmp(info.nome, nome) == 0)
@@ -65,5 +65,5 @@ void CPFdoCliente (char nome[30], char *cpf[13]) {
         }
     }
     fclose(cliente);
-    strcpy(cpf, info.CPF);
+    strcpy(cpf, info.CPF); // Passagem por Referência
 }
