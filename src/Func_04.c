@@ -11,9 +11,10 @@ void NovaVenda(){
     //Função irá procurar o cliente no arquivo.
     //Se o cliente não existir, haverá um desvio para registra-lo.
     printf("CPF: ");
-    scanf(" %s", novo.CPF);
+    scanf(" %[^\n]s", novo.CPF);
     if (!ProcuraCliente (novo.CPF)) {
         Limpar_Tela();
+        printf("Novo Cadastro \n\n");
         Cadastrar_Clientes();
         Limpar_Tela ();
     }
@@ -93,7 +94,7 @@ int DefinirIdentificacaoDaVenda(){
             id = ultima.id_vendas;
         fclose(venda);
     }
-    while (id < 0)
+    while (id < 0) // Caso seja a primeira venda
         id++;
     return (id + 1);
 }

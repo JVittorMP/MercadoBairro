@@ -66,7 +66,7 @@ int Identificar_Cliente(char CPF[13]){
         while(!feof(arqv))
         {
             fread(&Ident, sizeof(Clientes), 1, arqv);
-            if(Ident.CPF == CPF)
+            if(strcmp(Ident.CPF, CPF) == 0)
             {
                 fclose(arqv);
                 return aux; // Devolve a Posição
