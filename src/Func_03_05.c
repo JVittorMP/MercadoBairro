@@ -41,7 +41,7 @@ void Alterar_Clientes(){
     printf("Insira o CPF do cliente que deseja alterar: ");
     scanf(" %[^\n]", &CPF_cliente);
     pos = Identificar_Cliente(CPF_cliente); // Identifica a posição do cliente no arquivo
-    if(ProcuraCliente(CPF_cliente)) // Verifica se o cliente existe
+    if(ProcuraCliente(CPF_cliente) && pos == 0) // Verifica se o cliente existe
     {
         arqv = fopen("../Cliente.dat", "r+b");
         fseek(arqv, sizeof(Clientes)*(pos-1), SEEK_SET);
@@ -74,6 +74,7 @@ int Identificar_Cliente(char CPF[13]){
             aux++;
         }
     }
+    return 0;
 }
 
 void Troca_Cliente(Clientes *pont) {

@@ -31,7 +31,7 @@ void ListarVendas() {
     else {
         venda = fopen ("../Vendas.dat", "rb");
         if (venda == NULL)
-            printf ("Erro na bertura do arquivo de vendas.\n\n");
+            printf ("Erro na abertura do arquivo de vendas.\n\n");
         else {
             while (fread(&compra, sizeof(Vendas), 1, venda) != 0) {
                 if (strcmp(compra.CPF, cpf) == 0) {
