@@ -26,7 +26,7 @@ void ListarVendas() {
             break;
     }
     Separar_Tela();
-    if (strlen(cpf) < 13)
+    if (cpf == NULL)
         printf ("Não foi possível acessar lista.\n\n");
     else {
         venda = fopen ("../Vendas.dat", "rb");
