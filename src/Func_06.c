@@ -26,9 +26,7 @@ void ListarVendas() {
             break;
     }
     Separar_Tela();
-    if (strcmp(cpf, NULL) == 0)
-        printf ("Não foi possível acessar lista\n\n");
-    else {
+    if(ProcuraCliente(cpf)){
         venda = fopen ("../Vendas.dat", "rb");
         if (venda == NULL)
             printf ("Erro na abertura do arquivo de vendas.\n\n");
