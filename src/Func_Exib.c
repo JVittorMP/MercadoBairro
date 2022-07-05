@@ -13,10 +13,8 @@ void Exib_Produtos(){
             fread(&pol, sizeof(Produto), 1, arqv);
             if(feof(arqv))
                 break;
-            printf(" ID: %d \n", pol.id);
-            printf(" Setor: %s \n", pol.setor);
-            printf(" Nome: %s \n", pol.nome);
-            printf(" Preço: %.2lf \n", pol.preco);
+            printf(" ID: %d \n Setor: %s \n", pol.id, pol.setor);
+            printf(" Nome: %s \n Preço: %.2lf \n", pol.nome, pol.preco);
             printf(" Validade: %d/%d/%d \n", pol.validade.dia, pol.validade.mes, pol.validade.ano);
             printf(" Estoque: %d \n\n", pol.estoque);
         }
@@ -37,8 +35,7 @@ void Exib_Clientes(){
             fread(&pol, sizeof(Clientes), 1, arqv);
             if(feof(arqv))
                 break;
-            printf(" CPF: %s \n", pol.CPF);
-            printf(" Nome: %s \n", pol.nome);
+            printf(" CPF: %s \n Nome: %s \n", pol.CPF, pol.nome);
             printf(" Data de Nascimento: %d/%d/%d \n", pol.nascimento.dia, pol.nascimento.mes, pol.nascimento.ano);
             printf(" Idade: %d \n", pol.idade);
             printf(" Endereço: %s | %s - %s \n", pol.endereco, pol.cidade, pol.estado);
@@ -61,11 +58,41 @@ void Exib_Vendas(){
             fread(&pol, sizeof(Vendas), 1, arqv);
             if(feof(arqv))
                 break;
-            printf(" ID: %d \n", pol.id_vendas);
-            printf(" CPF Cliente: %s \n", pol.CPF);
+            printf(" ID: %d \n CPF Cliente: %s \n", pol.id_vendas, pol.CPF);
             printf(" Data da Compra: %d/%d/%d \n", pol.compra.dia, pol.compra.mes, pol.compra.ano);
             printf(" Valor Total: %.2f \n", pol.valor_total);
             printf(" Quantidade de Produtos: %d \n\n", pol.quant_prod);
+        }
+    }
+    fclose(arqv);
+    Sair_Menu();
+}
+
+// Exibe os Itens de Uma Venda a Partir do ID
+void Exib_Itens(){
+    ItensCompra pol;
+    int id_vendas;
+    bool imprimeCPF = true;
+    printf("Insira o ID da compra: ");
+    scanf(" %d", &id_vendas);
+    FILE *arqv;
+    arqv = fopen("../ItensCompra.dat", "rb");
+    if(arqv != NULL)
+    {
+        Limpar_Tela();
+        printf(" ID da Venda: %d \n", id_vendas);
+        while(fread(&pol, sizeof(ItensCompra), 1, arqv) != 0)
+        {
+            if(id_vendas == pol.id_venda)
+            {
+                if(imprimeCPF)
+                {
+                    printf(" CPF do Cliente: %s \n\n", pol.CPF);
+                    imprimeCPF = false;
+                }
+                printf(" ID do Produto: %d \n Quantidade: %d \n", pol.id_prod, pol.quant);
+                printf(" Valor Unidade: %.2f \n Valor Total: %.2f \n\n", pol.valor_uni, pol.valor_total);
+            }
         }
     }
     fclose(arqv);

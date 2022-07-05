@@ -109,8 +109,8 @@ void Menu_Produto(){
 void Menu_Exib(){
     int menu;
     printf("Menu de Exibição \n\n");
-    printf(" 1. Exibir Produtos \n 2. Exibir Clientes \n");
-    printf(" 3. Exibir Vendas \n 9. Sair \n\n");
+    printf(" 1. Exibir Produtos \n 2. Exibir Clientes \n 3. Exibir Vendas \n");
+    printf(" 4. Exibir Itens da Compra \n 9. Sair \n\n");
     printf("Insira a opção desejada: ");
     scanf(" %d", &menu);
     Limpar_Tela();
@@ -123,6 +123,9 @@ void Menu_Exib(){
             break;
         case 3: // Exibir Vendas
             Exib_Vendas();
+            break;
+        case 4: // Exibir Itens da Compra
+            Exib_Itens();
             break;
         case 9:
             Menu_Principal();

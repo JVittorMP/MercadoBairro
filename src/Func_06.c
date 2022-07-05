@@ -26,8 +26,8 @@ void ListarVendas() {
             break;
     }
     Separar_Tela();
-    if (cpf == NULL)
-        printf ("Não foi possível acessar lista.\n\n");
+    if (strcmp(cpf, NULL) == 0)
+        printf ("Não foi possível acessar lista\n\n");
     else {
         venda = fopen ("../Vendas.dat", "rb");
         if (venda == NULL)
@@ -36,7 +36,7 @@ void ListarVendas() {
             while (fread(&compra, sizeof(Vendas), 1, venda) != 0) {
                 if (strcmp(compra.CPF, cpf) == 0) {
                     printf ("Data: %d/%d/%d\n", compra.compra.dia, compra.compra.mes, compra.compra.ano);
-                    printf ("Valor: %f\n", compra.valor_total);
+                    printf ("Valor: %.2f\n", compra.valor_total);
                     printf ("Quantidade de produtos: %d\n", compra.quant_prod);
                     cont++;
                     Separar_Tela();

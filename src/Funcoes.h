@@ -44,5 +44,6 @@ void Estoque_Setor();
 void Exib_Produtos();
 void Exib_Clientes();
 void Exib_Vendas();
+void Exib_Itens();
 
 #endif
