@@ -46,7 +46,7 @@ void Atualizar_Pont(){
         fseek(arqv, sizeof(Clientes)*(pos-1), SEEK_SET);
         fread(&NovoCliente, sizeof(Clientes), 1, arqv);
         NovoCliente.pontos = (int) total;
-        fseek(arqv, sizeof(Produto)*(pos-1), SEEK_SET);
+        fseek(arqv, sizeof(Clientes)*(pos-1), SEEK_SET);
         fwrite(&NovoCliente, sizeof(Clientes), 1, arqv);
         fclose(arqv);
         printf("\nCliente: %s \n", NovoCliente.nome);
