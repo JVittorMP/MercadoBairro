@@ -8,8 +8,8 @@ void NovaVenda(){
     char finalizar_compra = 'n';
     bool itemDisp;
 
-    //Função irá procurar o cliente no arquivo.
-    //Se o cliente não existir, haverá um desvio para registra-lo.
+    // Função irá procurar o cliente no arquivo.
+    // Se o cliente não existir, haverá um desvio para registra-lo.
     printf("CPF: ");
     scanf(" %[^\n]s", novo.CPF);
     if (!ProcuraCliente (novo.CPF)) {
@@ -19,31 +19,31 @@ void NovaVenda(){
         Limpar_Tela ();
     }
 
-    //Procura a identificação da última venda para registrar o novo.
+    // Procura a identificação da última venda para registrar o novo.
     novo.id_vendas = DefinirIdentificacaoDaVenda();
 
     printf ("Data Da Venda: ");
     scanf (" %d/%d/%d", &novo.compra.dia, &novo.compra.mes, &novo.compra.ano);
-    //Valores iniciais antes de qualquer compra.
+    // Valores iniciais antes de qualquer compra.
     Separar_Tela ();
     novo.valor_total = 0;
     novo.quant_prod = 0;
 
     while ((finalizar_compra != 's') && (finalizar_compra != 'S')) {
-        //Adiciona mais um registro no arquivo ItensCompra e muda por referência a disponibilidade do produto.
-        //Dentro desta função há outra função que irá mostrar as informações do produto.
-        //Caso o produto esteja disponível, informações serão adicionadas no registro da venda.
+        // Adiciona mais um registro no arquivo ItensCompra e muda por referência a disponibilidade do produto.
+        // Dentro desta função há outra função que irá mostrar as informações do produto.
+        // Caso o produto esteja disponível, informações serão adicionadas no registro da venda.
         AdicionarItemCompra (novo.id_vendas, novo.CPF, &itemDisp, &valor);
         if (itemDisp) {
             novo.quant_prod++;
             novo.valor_total += valor;
         }
-        //O loop continuará até que a compra seja finalizada.
+        // O loop continuará até que a compra seja finalizada.
         printf ("Deseja finalizar compra? (S/N)  ");
         scanf (" %c", &finalizar_compra);
         Separar_Tela ();
     }
-    //Por fim, a adição de mais um registro Venda ao arquivo, caso haja compra
+    // Por fim, a adição de mais um registro Venda ao arquivo, caso haja compra
     if (novo.quant_prod > 0) {
         venda = fopen ("../Vendas.dat", "ab");
         fwrite (&novo, sizeof(struct Vendas), 1, venda);
@@ -82,13 +82,13 @@ int DefinirIdentificacaoDaVenda(){
     int id;
 
     venda = fopen ("../Vendas.dat", "rb");
-    //Se o arquivo não existe, será retornado o valor 0.
+    // Se o arquivo não existe, será retornado o valor 0.
     if (venda == NULL)
     {
         Limpar_Tela();
         printf("Erro na abertura do arquivo de vendas \n\n");
     }
-    //Caso contrário retornará um valor acima da última venda.
+    // Caso contrário retornará um valor acima da última venda.
     else {
         while (fread(&ultima, sizeof(Vendas), 1, venda) != 0)
             id = ultima.id_vendas;
@@ -109,7 +109,7 @@ void AdicionarItemCompra(int cod, char cpf[13], bool *compraValida, float *preco
     printf ("Quantidade de itens do produto: ");
     scanf (" %d", &item.quant);
 
-    //Mostra as informações do produto e sua disponibilidade no estoque.
+    // Mostra as informações do produto e sua disponibilidade no estoque.
     MostrarProduto (item.id_prod, &estoque, &item.valor_uni);
 
     if (estoque < item.quant) {
@@ -142,12 +142,12 @@ void MostrarProduto(int cod, int *estoque, float *valor){
     if (produto == NULL)
         printf ("Erro ao abrir o arquivo dos produtos\n\n");
     else {
-        //Encontrar o produto no arquivo
+        // Encontrar o produto no arquivo
         while ((!encontrado) && (fread(&info, sizeof(Produto), 1, produto) != 0)) {
             if (info.id == cod)
                 encontrado = true;
         }
-        //Irá mostrar as informações do produto se for encontrado.
+        // Irá mostrar as informações do produto se for encontrado.
         if (encontrado) {
             printf ("\nProduto: %s", info.nome);
             printf ("\nValor: %.2f", info.preco);
