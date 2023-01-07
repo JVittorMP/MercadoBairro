@@ -119,7 +119,7 @@ void Estoque_Setor(){
     arqv = fopen("../Produtos.dat", "rb");
     if(arqv != NULL)
     {
-        // Essa parte serve pra evitar que o usuário digite a enntrada errada
+        // Essa parte serve pra evitar que o usuário digite a entrada errada
         printf(" 1. Higiene e Limpeza \n 2. Bebidas \n");
         printf(" 3. Frios \n 4. Padaria \n 5. Açougue \n\n");
         printf("Selecione o setor desejado: ");
